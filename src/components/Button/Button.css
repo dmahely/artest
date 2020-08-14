@@ -1,0 +1,10 @@
+button {
+    background-color: var(--white);
+    border: none;
+    border-radius: 8px;
+    color: var(--black);
+    font: 24px 'Roboto-Thin';
+    cursor: pointer;
+    height: 45px;
+    width: 130px;
+}
