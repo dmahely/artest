@@ -1,0 +1,14 @@
+.circle {
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    background-color: var(--yellow);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.circle p {
+    align-self: center;
+}

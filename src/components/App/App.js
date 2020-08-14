@@ -3,6 +3,7 @@ import logo from '../../logo.svg';
 import './App.css';
 
 import { Button } from '../Button/Button';
+import { Option } from '../Option/Option';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <Button text="Start"/>
+        <Option color="yellow" text="1"/>
         <a
           className="App-link"
           href="https://reactjs.org"
