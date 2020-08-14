@@ -1,0 +1,31 @@
+.Artist--container {
+    background-color: var(--white);
+    color: var(--black);
+    cursor: pointer;
+    height: 70px;
+    width: 330px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.Artist--container span {
+    font: 22px 'Roboto-Regular';
+}
+
+.Artist--image {
+    width: auto;
+    max-height: 50px;
+    margin-right: 20px;
+}
+
+.Artist--name {
+    margin-right: 20px;
+    text-align: left;
+}
+
+.Artist--number {
+    margin: 0 20px;
+}
