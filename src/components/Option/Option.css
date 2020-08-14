@@ -2,7 +2,6 @@
     border-radius: 50%;
     width: 3em;
     height: 3em;
-    background-color: var(--yellow);
     color: var(--white);
     display: flex;
     justify-content: center;
@@ -11,4 +10,20 @@
 
 .circle p {
     align-self: center;
+}
+
+.navy { 
+    background-color: var(--navy);
+}
+
+.yellow { 
+    background-color: var(--yellow);
+}
+
+.green { 
+    background-color: var(--green);
+}
+
+.pink { 
+    background-color: var(--pink);
 }
