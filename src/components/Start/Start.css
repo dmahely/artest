@@ -1,0 +1,17 @@
+.Start--container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.Start--logo {
+    margin: 0 auto;
+    margin-top: 70px;
+    width: 250px;
+    height: 180px;
+}
+
+.Start--description {
+    margin: 20px 0 80px 0;
+    font: 16px 'Roboto-Thin';
+}

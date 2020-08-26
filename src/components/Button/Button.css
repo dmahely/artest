@@ -7,4 +7,6 @@ button {
     cursor: pointer;
     height: 45px;
     width: 130px;
+    margin: 0 auto;
+    padding: 7px;
 }

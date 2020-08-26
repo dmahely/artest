@@ -1,5 +1,5 @@
 .App--container {
   background-color: var(--gray);
-  height: 500px;
+  height: 100vh;
   text-align: center;
 }
