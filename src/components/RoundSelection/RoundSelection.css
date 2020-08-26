@@ -1,0 +1,14 @@
+.RoundSelection--container {
+    padding-top: 80px;
+}
+
+.RoundSelection--options-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+}
+
+.RoundSelection--question {
+    font: 26px 'Roboto-Thin';
+    padding-top: 50px;
+}

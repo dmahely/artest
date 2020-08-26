@@ -1,11 +1,13 @@
 .circle {
     border-radius: 50%;
-    width: 3em;
-    height: 3em;
+    width: 5em;
+    height: 5em;
     color: var(--white);
     display: flex;
     justify-content: center;
     cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .circle p {

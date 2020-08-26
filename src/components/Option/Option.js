@@ -3,9 +3,9 @@ import './Option.css'
 
 const Option = (props) => {
     return (
-        <div className={`circle ${props.color}`}>
+        <button className={`circle ${props.color}`} onClick={props.onClick}>
             <p>{props.text}</p>
-        </div>
+        </button>
         )
     }
 
