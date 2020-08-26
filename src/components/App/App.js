@@ -1,34 +1,15 @@
-import React from 'react';
-import logo from '../../logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Start } from '../Start/Start';
 
-import { Button } from '../Button/Button';
-import { Option } from '../Option/Option';
-import { Result } from '../Result/Result';
+const App = () => {
+  const [route, setRoute] = useState('start');
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button text="Start"/>
-        <Option color="navy" text="1"/>
-        <Option color="yellow" text="2"/>
-        <Result result="Correct" payload="Beyoncé is also the artist behind Lemonade (2016) and BEYONCÉ (2013)"/>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    return (
+      <div className="App--container">
+        {route === 'start' && <Start setRoute={setRoute} />}
+      </div>
+    );
+  }
 
-export default App;
+export { App };
