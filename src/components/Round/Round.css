@@ -1,0 +1,10 @@
+.Round--album-image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.Round--artists-container {
+    display: grid;
+    justify-content: center;
+}

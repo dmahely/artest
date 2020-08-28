@@ -5,7 +5,7 @@
     height: 70px;
     width: 330px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     border-radius: 10px;
     margin: 5px;
@@ -16,7 +16,7 @@
 }
 
 .Artist--image {
-    width: auto;
+    width: 50px;
     max-height: 50px;
     margin-right: 20px;
 }
