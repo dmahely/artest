@@ -4,12 +4,12 @@ import './Artist.css';
 const Artist = (props) => {
     // for changing the number to a play icon on mouse enter
     const handleMouseEnter = (e) => {
-        e.target.children.item(0).innerHTML = '▶︎';
+        if(e.target.children.length) e.target.children.item(0).innerHTML = '▶︎';
     };
 
     // for changing the play icon back to a number on mouse leave
     const handleMouseLeave = (e) => {
-        e.target.children.item(0).innerHTML = props.number;
+        if(e.target.children.length) e.target.children.item(0).innerHTML = props.number;
     }
 
     return (
