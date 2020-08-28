@@ -11,6 +11,11 @@
     margin: 5px;
 }
 
+.Artist--container:hover {
+    background-color: var(--light-navy);
+    color: var(--white);
+}
+
 .Artist--container span {
     font: 22px 'Roboto-Regular';
 }

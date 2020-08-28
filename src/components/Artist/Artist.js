@@ -1,16 +1,24 @@
 import React from 'react';
 import './Artist.css';
 
-class Artist extends React.Component {
-    render() {
-        return (
-            <div className="Artist--container">
-                <span className="Artist--number">{this.props.number}</span>
-                <img className="Artist--image" src={this.props.image} alt={this.props.name} />
-                <span className="Artist--name">{this.props.name}</span>
-            </div>
-        );
+const Artist = (props) => {
+    // for changing the number to a play icon on mouse enter
+    const handleMouseEnter = (e) => {
+        e.target.children.item(0).innerHTML = '▶︎';
+    };
+
+    // for changing the play icon back to a number on mouse leave
+    const handleMouseLeave = (e) => {
+        e.target.children.item(0).innerHTML = props.number;
     }
+
+    return (
+        <div className="Artist--container" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <span className="Artist--number">{props.number}</span>
+            <img className="Artist--image" src={props.image} alt={props.name} />
+            <span className="Artist--name">{props.name}</span>
+        </div>
+    );
 }
 
 export { Artist };
