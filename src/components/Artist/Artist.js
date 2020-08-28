@@ -13,11 +13,11 @@ const Artist = (props) => {
     }
 
     return (
-        <div className="Artist--container" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <button className="Artist--container" onClick={() => props.setRoute('result')} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <span className="Artist--number">{props.number}</span>
             <img className="Artist--image" src={props.image} alt={props.name} />
             <span className="Artist--name">{props.name}</span>
-        </div>
+        </button>
     );
 }
 
