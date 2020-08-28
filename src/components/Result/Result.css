@@ -1,0 +1,30 @@
+.Result--container {
+    background: linear-gradient(180deg, var(--white) 0%, var(--green) 100%);
+    height: 100vh;
+    margin-top: -20px; /* to counteract the margin-top of app container */
+    padding-top: 20px;
+}
+
+.correct {
+    background: linear-gradient(180deg, var(--white) 0%, var(--green) 100%);
+}
+
+.incorrect {
+    background: linear-gradient(180deg, var(--white) 0%, var(--pink) 100%);
+}
+
+.Result--album-image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.Result--result {
+    font: 36px 'Roboto-Bold';
+    color: var(--white);
+}
+
+.Result--payload {
+    font: 24px 'Roboto-Regular';
+    color: var(--white);
+}
