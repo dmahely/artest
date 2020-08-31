@@ -1,3 +1,6 @@
+.Round--container {
+    padding: 20px 0;
+}
 .Round--album-image {
     width: 200px;
     height: 200px;
