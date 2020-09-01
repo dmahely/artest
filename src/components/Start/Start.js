@@ -8,6 +8,8 @@ const Start = (props) => {
 
     return (
       <div className="Start--container">
+        <div className="Start--top-shape"></div>
+        <div className="Start--bottom-shape"></div>
         <img className="Start--logo" src={logo} alt="Artest logo" />
         <span className="Start--description">Guess which artist the album belongs to</span>
         <Button text="Start" onClick={() => setRoute('roundSelection')} />
