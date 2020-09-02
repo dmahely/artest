@@ -15,7 +15,7 @@ const Round = (props) => {
 
     return (
         <div className="Round--container">
-            <Progress width={width}/>
+            <Progress width={width} currentRound={currentRound} rounds={rounds} />
             <img className="Round--album-image" src="https://images-na.ssl-images-amazon.com/images/I/71uR2KhRrZL._AC_SL1066_.jpg" alt="Album name" />
             <div className="Round--artists-container">
                 <Artist number="1" name="Teyana Taylor" image="https://www.rollingstone.com/wp-content/uploads/2020/06/teyana-taylor.jpg" setRoute={setRoute}/>
