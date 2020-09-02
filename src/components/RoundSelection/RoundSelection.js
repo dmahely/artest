@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './RoundSelection.css';
 import { Option } from '../Option/Option';
+import { AccessTokenContext } from '../../hooks/TokenContext';
 
 const RoundSelection = (props) => {
     const {setRoute, setRounds} = props;
+    const accessToken = useContext(AccessTokenContext);
     
     return (
         <div className="RoundSelection--container">

@@ -4,6 +4,7 @@ import { Start } from '../Start/Start';
 import { RoundSelection } from '../RoundSelection/RoundSelection';
 import { Round } from '../Round/Round';
 import { Result } from '../Result/Result';
+import { AccessTokenContext } from '../../hooks/TokenContext';
 
 const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL,
   apiTokenURL = process.env.REACT_APP_SPOTIFY_ACCESS_TOKEN_URL,
@@ -40,7 +41,6 @@ const App = () => {
 
       // calculate expiry date and time (current time + one hour)
       const expires_at = Date.now() + (60 * 60 * 1000);
-
       setAccessToken({ token, expires_at });
     }
 
@@ -49,10 +49,12 @@ const App = () => {
 
     return (
       <div className="App--container">
-        {route === 'start' && <Start setRoute={setRoute} />}
-        {route === 'roundSelection' && <RoundSelection setRoute={setRoute} setRounds={setRounds} />}
-        {route === 'play' && <Round setRoute={setRoute} />}
-        {route === 'result' && <Result />}
+        <AccessTokenContext.Provider value={accessToken}>
+          {route === 'start' && <Start setRoute={setRoute} />}
+          {route === 'roundSelection' && <RoundSelection setRoute={setRoute} setRounds={setRounds} />}
+          {route === 'play' && <Round setRoute={setRoute} />}
+          {route === 'result' && <Result />}
+        </AccessTokenContext.Provider>
       </div>
     );
   }
