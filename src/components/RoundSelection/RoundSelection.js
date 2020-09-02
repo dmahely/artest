@@ -6,7 +6,7 @@ import { AccessTokenContext } from '../../hooks/TokenContext';
 const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL;
 
 const RoundSelection = (props) => {
-    const {setRoute, setRounds} = props;
+    const {setRoute, setRounds, setAlbums} = props;
     const accessToken = useContext(AccessTokenContext);
     
     useEffect(() => {
@@ -29,7 +29,7 @@ const RoundSelection = (props) => {
         // append params to baseURL
         const searchEndpoint = `${baseURL}/search?` + stringifiedQueryParams;
 
-        const albums = fetch(searchEndpoint, {
+        const albums = await fetch(searchEndpoint, {
             headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const RoundSelection = (props) => {
         })
         .catch(err => console.log(err));
 
-        return albums;
+        setAlbums(albums);
     }
 
     fetchRandomAlbums(accessToken);

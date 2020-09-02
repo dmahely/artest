@@ -18,6 +18,7 @@ const App = () => {
     token: null,
     expires_at: null
   });
+  const [albums, setAlbums] = useState({albums: []});
 
   useEffect(() => {
     const fetchDataAccessToken = async() => {
@@ -50,7 +51,7 @@ const App = () => {
       <div className="App--container">
         <AccessTokenContext.Provider value={accessToken}>
           {route === 'start' && <Start setRoute={setRoute} />}
-          {route === 'roundSelection' && <RoundSelection setRoute={setRoute} setRounds={setRounds} />}
+          {route === 'roundSelection' && <RoundSelection setRoute={setRoute} setRounds={setRounds} setAlbums={setAlbums} />}
           {route === 'play' && <Round setRoute={setRoute} />}
           {route === 'result' && <Result />}
         </AccessTokenContext.Provider>
