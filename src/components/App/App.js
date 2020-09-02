@@ -6,8 +6,7 @@ import { Round } from '../Round/Round';
 import { Result } from '../Result/Result';
 import { AccessTokenContext } from '../../hooks/TokenContext';
 
-const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL,
-  apiTokenURL = process.env.REACT_APP_SPOTIFY_ACCESS_TOKEN_URL,
+const apiTokenURL = process.env.REACT_APP_SPOTIFY_ACCESS_TOKEN_URL,
   client_id = process.env.REACT_APP_CLIENT_ID,
   client_secret = process.env.REACT_APP_CLIENT_SECRET;
 
