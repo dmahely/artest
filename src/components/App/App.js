@@ -19,6 +19,7 @@ const App = () => {
     expires_at: null
   });
   const [albums, setAlbums] = useState({albums: []});
+  const [currentRound, setCurrentRound] = useState(0);
 
   useEffect(() => {
     const fetchDataAccessToken = async() => {
@@ -52,8 +53,8 @@ const App = () => {
         <AccessTokenContext.Provider value={accessToken}>
           {route === 'start' && <Start setRoute={setRoute} />}
           {route === 'roundSelection' && <RoundSelection setRoute={setRoute} setRounds={setRounds} setAlbums={setAlbums} />}
-          {route === 'play' && <Round setRoute={setRoute} />}
-          {route === 'result' && <Result />}
+          {route === 'play' && <Round setRoute={setRoute} albums={albums} rounds={rounds} setCurrentRound={setCurrentRound} currentRound={currentRound} />}
+          {route === 'result' && <Result setRoute={setRoute} />}
         </AccessTokenContext.Provider>
       </div>
     );
