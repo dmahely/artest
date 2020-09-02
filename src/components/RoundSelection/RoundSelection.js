@@ -29,7 +29,7 @@ const RoundSelection = (props) => {
         // append params to baseURL
         const searchEndpoint = `${baseURL}/search?` + stringifiedQueryParams;
 
-        const album = fetch(searchEndpoint, {
+        const albums = fetch(searchEndpoint, {
             headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -37,10 +37,24 @@ const RoundSelection = (props) => {
             }
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            // map over response and return an album object for each one
+            // album object: {name, coverArt, artistId, artistName}
+            const albums = data.albums.items.map(album => {
+                const albumObj = {
+                    coverArt: album.images[0].url,
+                    name: album.name,
+                    artistName: album.artists[0].name,
+                    artistId: album.artists[0].id,
+                }
+                return albumObj;
+            });
+
+            return albums;
+        })
         .catch(err => console.log(err));
 
-        return album;
+        return albums;
     }
 
     fetchRandomAlbums(accessToken);
