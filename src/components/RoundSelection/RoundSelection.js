@@ -6,14 +6,14 @@ import { AccessTokenContext } from '../../hooks/TokenContext';
 const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL;
 
 const RoundSelection = (props) => {
-    const {setRoute, setRounds, setAlbums} = props;
+    const {setRoute, setRounds, setAlbums, albums} = props;
     const accessToken = useContext(AccessTokenContext);
     
     useEffect(() => {
         const fetchRandomAlbums = async(accessToken) => {
 
         const queryParam = 'one%'; // to be randomized
-        const offsetParam = 100; // a number between 1 and 2000
+        const offsetParam = 5; // a number between 1 and 2000
         const typeParam = 'album';
         const limitParam = 5; // initial batch
 
@@ -50,11 +50,44 @@ const RoundSelection = (props) => {
                 return albumObj;
             });
 
+            fetchArtistData(accessToken, albums);
+
             return albums;
         })
         .catch(err => console.log(err));
 
         setAlbums(albums);
+    }
+
+    const fetchArtistData = async(accessToken, albums) => {
+        // get albums from state and stringify it
+        const artistIds = albums.map(artist => artist.artistId).join(',');
+
+        const queryParams = new URLSearchParams({
+            ids: artistIds
+        });
+        const stringifiedQueryParams = queryParams.toString();
+
+        // append params to baseURL
+        const severalArtistsEndpoint = `${baseURL}/artists?` + stringifiedQueryParams;
+
+        const artistImages = await fetch(severalArtistsEndpoint, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + accessToken.token
+            }
+         })
+        .then(response => response.json())
+        .then(data => {
+            const images = data.artists.map(artist => artist.images[0].url);
+            return images;
+        });
+        
+        // map each album to an artist image
+        albums.forEach((album, index) => {
+            album.artistImage = artistImages[index];
+        });
     }
 
     fetchRandomAlbums(accessToken);
