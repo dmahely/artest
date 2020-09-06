@@ -1,10 +1,98 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './RoundSelection.css';
 import { Option } from '../Option/Option';
+import { AccessTokenContext } from '../../hooks/TokenContext';
+
+const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL;
 
 const RoundSelection = (props) => {
-    const {setRoute, setRounds} = props;
+    const {setRoute, setRounds, setAlbums, albums} = props;
+    const accessToken = useContext(AccessTokenContext);
     
+    useEffect(() => {
+        const fetchRandomAlbums = async(accessToken) => {
+
+        const queryParam = 'one%'; // to be randomized
+        const offsetParam = 5; // a number between 1 and 2000
+        const typeParam = 'album';
+        const limitParam = 5; // initial batch
+
+        const queryParams = new URLSearchParams({
+            q: queryParam,
+            type: typeParam,
+            limit: limitParam,
+            offset: offsetParam
+          });
+
+        const stringifiedQueryParams = queryParams.toString();
+
+        // append params to baseURL
+        const searchEndpoint = `${baseURL}/search?` + stringifiedQueryParams;
+
+        const albums = await fetch(searchEndpoint, {
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + accessToken.token
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // map over response and return an album object for each one
+            // album object: {name, coverArt, artistId, artistName}
+            const albums = data.albums.items.map(album => {
+                const albumObj = {
+                    coverArt: album.images[0].url,
+                    name: album.name,
+                    artistName: album.artists[0].name,
+                    artistId: album.artists[0].id,
+                }
+                return albumObj;
+            });
+
+            fetchArtistData(accessToken, albums);
+
+            return albums;
+        })
+        .catch(err => console.log(err));
+
+        setAlbums(albums);
+    }
+
+    const fetchArtistData = async(accessToken, albums) => {
+        // get albums from state and stringify it
+        const artistIds = albums.map(artist => artist.artistId).join(',');
+
+        const queryParams = new URLSearchParams({
+            ids: artistIds
+        });
+        const stringifiedQueryParams = queryParams.toString();
+
+        // append params to baseURL
+        const severalArtistsEndpoint = `${baseURL}/artists?` + stringifiedQueryParams;
+
+        const artistImages = await fetch(severalArtistsEndpoint, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + accessToken.token
+            }
+         })
+        .then(response => response.json())
+        .then(data => {
+            const images = data.artists.map(artist => artist.images[0].url);
+            return images;
+        });
+        
+        // map each album to an artist image
+        albums.forEach((album, index) => {
+            album.artistImage = artistImages[index];
+        });
+    }
+
+    fetchRandomAlbums(accessToken);
+    }, []);
+
     return (
         <div className="RoundSelection--container">
             <span className="RoundSelection--question">How many rounds do you want to play?</span>
