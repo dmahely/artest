@@ -13,18 +13,18 @@ const Round = (props) => {
     // calculate current progress
     const width = (currentRound / rounds) * 100;
 
-    const albumCoverArt = albums[currentRound].coverArt;
-    const albumName = albums[currentRound].name;
+    const albumCoverArt = albums[currentRound].albumObj.coverArt;
+    const albumName = albums[currentRound].albumObj.name;
+    const artists = albums[currentRound].artistsArray;
 
     return (
         <div className="Round--container">
             <Progress width={width} currentRound={currentRound} rounds={rounds} />
             <img className="Round--album-image" src={albumCoverArt} alt={albumName} />
             <div className="Round--artists-container">
-                <Artist number="1" name="Teyana Taylor" image="https://www.rollingstone.com/wp-content/uploads/2020/06/teyana-taylor.jpg" setRoute={setRoute}/>
-                <Artist number="2" name="Beyoncé" image="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0MTU0MTc3NzkzMTA3MzU1/beyonce-attends-tidal-x-1015-on-october-15-2016-in-new-york-city-photo-by-theo-wargogetty-images-for-tidal-sqaure.jpg" setRoute={setRoute}/>
-                <Artist number="3" name="Kendrick Lamar" image="https://upload.wikimedia.org/wikipedia/commons/3/32/Pulitzer2018-portraits-kendrick-lamar.jpg" setRoute={setRoute}/>
-                <Artist number="4" name="Pharrel Williams" image="https://www.cheatsheet.com/wp-content/uploads/2019/10/Pharrell-Williams.jpg" setRoute={setRoute}/>
+                {artists.map((artist, index) =>
+                    <Artist number={index} key={index} name={artist.name} image={artist.image} setRoute={setRoute} />
+                )}
             </div>
         </div>
     );
