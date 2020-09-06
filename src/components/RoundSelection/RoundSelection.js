@@ -43,51 +43,22 @@ const RoundSelection = (props) => {
             const albums = data.albums.items.map(album => {
                 const albumObj = {
                     coverArt: album.images[0].url,
-                    name: album.name,
+                    name: album.name
+                }
+                const artistsArray = [{
                     artistName: album.artists[0].name,
                     artistId: album.artists[0].id,
-                }
-                return albumObj;
-            });
+                    isAnswer: true
+                }];
 
-            fetchArtistData(accessToken, albums);
+                return { albumObj, artistsArray };
+            });
 
             return albums;
         })
         .catch(err => console.log(err));
 
         setAlbums(albums);
-    }
-
-    const fetchArtistData = async(accessToken, albums) => {
-        // get albums from state and stringify it
-        const artistIds = albums.map(artist => artist.artistId).join(',');
-
-        const queryParams = new URLSearchParams({
-            ids: artistIds
-        });
-        const stringifiedQueryParams = queryParams.toString();
-
-        // append params to baseURL
-        const severalArtistsEndpoint = `${baseURL}/artists?` + stringifiedQueryParams;
-
-        const artistImages = await fetch(severalArtistsEndpoint, {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + accessToken.token
-            }
-         })
-        .then(response => response.json())
-        .then(data => {
-            const images = data.artists.map(artist => artist.images[0].url);
-            return images;
-        });
-        
-        // map each album to an artist image
-        albums.forEach((album, index) => {
-            album.artistImage = artistImages[index];
-        });
     }
 
     fetchRandomAlbums(accessToken);
