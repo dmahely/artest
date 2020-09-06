@@ -46,8 +46,8 @@ const RoundSelection = (props) => {
                     name: album.name
                 }
                 const artistsArray = [{
-                    artistName: album.artists[0].name,
-                    artistId: album.artists[0].id,
+                    name: album.artists[0].name,
+                    id: album.artists[0].id,
                     isAnswer: true
                 }];
 
