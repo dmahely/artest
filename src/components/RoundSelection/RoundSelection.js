@@ -95,6 +95,43 @@ const RoundSelection = (props) => {
         albums.forEach((album, index) => {
             album.artistsArray[0].image = artistImages[index];
         });
+
+        fetchRelatedArtists(accessToken, albums);
+    }
+
+    const fetchRelatedArtists = async(accessToken, albums) => {
+        // returns the current round's artist id 
+        const artistId = albums[0].artistsArray[0].id;
+
+        // append params to baseURL
+        const relatedArtistsEndpoint = `${baseURL}/artists/${artistId}/related-artists`;
+
+        const relatedArtists = await fetch(relatedArtistsEndpoint, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + accessToken.token
+            }
+         })
+        .then(response => response.json())
+        .then(data => {
+            // get 3 most related artists
+            const relatedArtists = data.artists.slice(0, 3).map(artist => {
+                const artistObj = {
+                    name: artist.name,
+                    id: artist.id,
+                    image: artist.images[0].url,
+                    isAnswer: false,
+                }
+                return artistObj;
+            });
+            return relatedArtists;
+        });
+        
+        // map each album to an artist image
+        relatedArtists.forEach(artist => {
+            albums[0].artistsArray.push(artist);
+        });
     }
 
     fetchRandomAlbums(accessToken);
