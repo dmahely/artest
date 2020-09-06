@@ -54,11 +54,47 @@ const RoundSelection = (props) => {
                 return { albumObj, artistsArray };
             });
 
+            fetchArtistData(accessToken, albums);
+
             return albums;
         })
         .catch(err => console.log(err));
 
         setAlbums(albums);
+    }
+
+    const fetchArtistData = async(accessToken, albums) => {
+        // get artist ids in a comma separated string
+        const artistIds = albums.map(round => {
+            return round.artistsArray[0].id
+        }).join(',');
+
+        const queryParams = new URLSearchParams({
+            ids: artistIds
+        });
+        const stringifiedQueryParams = queryParams.toString();
+
+        // append params to baseURL
+        const severalArtistsEndpoint = `${baseURL}/artists?` + stringifiedQueryParams;
+
+        const artistImages = await fetch(severalArtistsEndpoint, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + accessToken.token
+            }
+         })
+        .then(response => response.json())
+        .then(data => {
+            // return artist images in an array
+            const images = data.artists.map(artist => artist.images[0].url);
+            return images;
+        });
+        
+        // map each round's artists obj to an artist image
+        albums.forEach((album, index) => {
+            album.artistsArray[0].image = artistImages[index];
+        });
     }
 
     fetchRandomAlbums(accessToken);
