@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Round.css'
 import { Progress } from '../Progress/Progress.js';
 import { Artist } from '../Artist/Artist.js';
 
-// state: number of rounds, current round, selected, correct answer
-// functions: fetch album and array of possible artists
-
 const Round = (props) => {
-    const {setRoute} = props;
+    const {setRoute, rounds, setCurrentRound, currentRound} = props;
+
+    useEffect(() => {
+        setCurrentRound(currentRound => currentRound + 1);
+    }, []);
+
+    // calculate current progress
+    const width = (currentRound / rounds) * 100;
+
     return (
         <div className="Round--container">
-            <Progress width="50"/>
+            <Progress width={width} currentRound={currentRound} rounds={rounds} />
             <img className="Round--album-image" src="https://images-na.ssl-images-amazon.com/images/I/71uR2KhRrZL._AC_SL1066_.jpg" alt="Album name" />
             <div className="Round--artists-container">
                 <Artist number="1" name="Teyana Taylor" image="https://www.rollingstone.com/wp-content/uploads/2020/06/teyana-taylor.jpg" setRoute={setRoute}/>
