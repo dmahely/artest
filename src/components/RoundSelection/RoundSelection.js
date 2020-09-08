@@ -2,14 +2,18 @@ import React, { useEffect } from 'react';
 import './RoundSelection.css';
 import { Option } from '../Option/Option';
 import { fetchFiveRandomAlbums } from '../fetchFiveRandomAlbums';
+import { fetchArtistData } from '../fetchArtistData';
 
 const RoundSelection = (props) => {
-    const {setRoute, setRounds, setAlbums} = props;
+    const {setRoute, setRounds, setAlbums, currentRound} = props;
     
     useEffect(() => {
         const getAlbums = async() => {
             const albums = await fetchFiveRandomAlbums();
             setAlbums({ albums });
+
+            const albumsWithArtistImages = await fetchArtistData(albums, currentRound);
+            setAlbums({albums: albumsWithArtistImages});
         }
 
         getAlbums();
