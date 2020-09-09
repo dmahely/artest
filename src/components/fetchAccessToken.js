@@ -18,7 +18,9 @@ const fetchAccessToken = async() => {
     });
 
     // jsonify the api response and return the access token
-    const token = await tokenResponse.json().then(tokenObj => tokenObj.access_token);
+    const tokenVal = await tokenResponse.json()
+    const token = tokenVal.access_token;
+    
     // calculate expiry date and time (current time + one hour)
     const expires_at = Date.now() + (60 * 60 * 1000);
     
