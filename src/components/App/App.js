@@ -4,7 +4,6 @@ import { Start } from '../Start/Start';
 import { RoundSelection } from '../RoundSelection/RoundSelection';
 import { Round } from '../Round/Round';
 import { Result } from '../Result/Result';
-import { AccessTokenContext } from '../../hooks/TokenContext';
 import { fetchAccessToken } from '../fetchAccessToken';
 import { isAccessTokenValid } from '../isAccessTokenValid';
 
@@ -38,12 +37,10 @@ const App = () => {
 
     return (
       <div className="App--container">
-        <AccessTokenContext.Provider value={accessToken}>
           {route === 'start' && <Start setRoute={setRoute} />}
           {route === 'roundSelection' && <RoundSelection setRoute={setRoute} setRounds={setRounds} setAlbums={setAlbums} currentRound={currentRound} />}
           {route === 'play' && <Round setRoute={setRoute} albums={albums} rounds={rounds} setCurrentRound={setCurrentRound} currentRound={currentRound} />}
           {route === 'result' && <Result setRoute={setRoute} />}
-        </AccessTokenContext.Provider>
       </div>
     );
   }
