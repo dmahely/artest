@@ -4,58 +4,43 @@ import { Start } from '../Start/Start';
 import { RoundSelection } from '../RoundSelection/RoundSelection';
 import { Round } from '../Round/Round';
 import { Result } from '../Result/Result';
-import { AccessTokenContext } from '../../hooks/TokenContext';
-
-const apiTokenURL = process.env.REACT_APP_SPOTIFY_ACCESS_TOKEN_URL,
-  client_id = process.env.REACT_APP_CLIENT_ID,
-  client_secret = process.env.REACT_APP_CLIENT_SECRET;
+import { fetchAccessToken } from '../fetchAccessToken';
+import { isAccessTokenValid } from '../isAccessTokenValid';
 
 const App = () => {
   const [route, setRoute] = useState('start');
   const [rounds, setRounds] = useState(5);
-  const [accessToken, setAccessToken] = 
-  useState({
+  const [albums, setAlbums] = useState({albums: []});
+  const [currentRound, setCurrentRound] = useState(1);
+
+  const accessToken = {
     token: null,
     expires_at: null
-  });
-  const [albums, setAlbums] = useState({albums: []});
-  const [currentRound, setCurrentRound] = useState(0);
+  };
 
   useEffect(() => {
-    const fetchDataAccessToken = async() => {
-
-      // encodes client id and secret to base64
-      const authParam = btoa(client_id + ':' + client_secret);
-      const token = await fetch(apiTokenURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Authorization': 'Basic ' + authParam 
-        },
-        body: new URLSearchParams({
-          grant_type: 'client_credentials'
-        })
-      })
-      .then(response => response.json())
-      .then(data => data.access_token)
-      .catch(err => console.log(err));
-
-      // calculate expiry date and time (current time + one hour)
-      const expires_at = Date.now() + (60 * 60 * 1000);
-      setAccessToken({ token, expires_at });
+    // get access token and save it in localStorage
+    
+    const getToken = async() => {
+      
+      if(!await isAccessTokenValid()) {
+        const token = await fetchAccessToken();
+        localStorage.setItem('token', JSON.stringify(token.token));
+        localStorage.setItem('expiry', JSON.stringify(token.expires_at));
+      }
+      
     }
+    getToken();
 
-    fetchDataAccessToken();
-  }, []);
+    
+  }, [accessToken]);
 
     return (
       <div className="App--container">
-        <AccessTokenContext.Provider value={accessToken}>
           {route === 'start' && <Start setRoute={setRoute} />}
-          {route === 'roundSelection' && <RoundSelection setRoute={setRoute} setRounds={setRounds} setAlbums={setAlbums} />}
+          {route === 'roundSelection' && <RoundSelection setRoute={setRoute} setRounds={setRounds} setAlbums={setAlbums} currentRound={currentRound} />}
           {route === 'play' && <Round setRoute={setRoute} albums={albums} rounds={rounds} setCurrentRound={setCurrentRound} currentRound={currentRound} />}
           {route === 'result' && <Result setRoute={setRoute} />}
-        </AccessTokenContext.Provider>
       </div>
     );
   }
