@@ -3,17 +3,26 @@ import './RoundSelection.css';
 import { Option } from '../Option/Option';
 import { fetchFiveRandomAlbums } from '../fetchFiveRandomAlbums';
 import { fetchArtistData } from '../fetchArtistData';
+import { fetchRelatedArtists } from '../fetchRelatedArtists';
+import { getCurrentRoundArtistId } from '../getCurrentRoundArtistId';
 
 const RoundSelection = (props) => {
     const {setRoute, setRounds, setAlbums, currentRound} = props;
     
     useEffect(() => {
         const getAlbums = async() => {
+            // todo: structure these three calls in a better way
+
             const albums = await fetchFiveRandomAlbums();
             setAlbums({ albums });
 
             const albumsWithArtistImages = await fetchArtistData(albums, currentRound);
             setAlbums({albums: albumsWithArtistImages});
+
+            const artistId = getCurrentRoundArtistId(albums, currentRound);
+
+            const albumsWithRelatedArtists = await fetchRelatedArtists(albums, artistId, currentRound);
+            setAlbums({albums: albumsWithRelatedArtists});
         }
 
         getAlbums();
