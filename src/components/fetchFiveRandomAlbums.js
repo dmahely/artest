@@ -32,7 +32,8 @@ const fetchFiveRandomAlbums = async() => {
         }
     });
 
-    const albums = await albumsResponse.json().then(data => extractAlbumData(data));
+    const albumsData = await albumsResponse.json();
+    const albums = extractAlbumData(albumsData);
 
     return albums;
 }

@@ -29,7 +29,8 @@ const fetchArtistData = async(albums, currentRound) => {
         }
     });
 
-    const artistImages = await artistImagesResponse.json().then(data => extractArtistData(data));
+    const artistImagesData = await artistImagesResponse.json()
+    const artistImages = extractArtistData(artistImagesData);
     
     // map each round's artists obj to an artist image
     albums.forEach((album, index) => {
