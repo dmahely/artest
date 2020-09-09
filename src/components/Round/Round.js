@@ -1,21 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Round.css'
 import { Progress } from '../Progress/Progress.js';
 import { Artist } from '../Artist/Artist.js';
 
 const Round = (props) => {
-    const {setRoute, rounds, setCurrentRound, currentRound, albums} = props;
-
-    useEffect(() => {
-        setCurrentRound(currentRound => currentRound + 1);
-    }, []);
+    const {setRoute, rounds, currentRound, albums} = props;
 
     // calculate current progress
     const width = (currentRound / rounds) * 100;
 
-    const albumCoverArt = albums[currentRound].albumObj.coverArt;
-    const albumName = albums[currentRound].albumObj.name;
-    const artists = albums[currentRound].artistsArray;
+    const albumCoverArt = albums.albums[currentRound - 1].albumObj.coverArt;
+    const albumName = albums.albums[currentRound - 1].albumObj.name;
+    const artists = albums.albums[currentRound - 1].artistsArray;
 
     return (
         <div className="Round--container">
@@ -23,7 +19,7 @@ const Round = (props) => {
             <img className="Round--album-image" src={albumCoverArt} alt={albumName} />
             <div className="Round--artists-container">
                 {artists.map((artist, index) =>
-                    <Artist number={index} key={index} name={artist.name} image={artist.image} setRoute={setRoute} />
+                    <Artist number={index + 1} key={index} name={artist.name} image={artist.image} setRoute={setRoute} />
                 )}
             </div>
         </div>

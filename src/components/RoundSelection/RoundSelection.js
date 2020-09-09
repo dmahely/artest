@@ -17,12 +17,12 @@ const RoundSelection = (props) => {
             setAlbums({ albums });
 
             const albumsWithArtistImages = await fetchArtistData(albums, currentRound);
-            setAlbums({albums: albumsWithArtistImages});
+            setAlbums({albums: albumsWithArtistImages}); // bug todo: this makes me have to do albums.albums
 
             const artistId = getCurrentRoundArtistId(albums, currentRound);
 
             const albumsWithRelatedArtists = await fetchRelatedArtists(albums, artistId, currentRound);
-            setAlbums({albums: albumsWithRelatedArtists});
+            setAlbums({albums: albumsWithRelatedArtists}); // bug todo: this makes me have to do albums.albums
         }
 
         getAlbums();
