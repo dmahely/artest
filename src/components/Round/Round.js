@@ -4,7 +4,7 @@ import { Progress } from '../Progress/Progress.js';
 import { Artist } from '../Artist/Artist.js';
 
 const Round = (props) => {
-    const {setRoute, rounds, currentRound, albums, setScore, results, setResults} = props;
+    const {setRoute, rounds, currentRound, albums, results, setResults} = props;
 
     // calculate current progress
     const width = (currentRound / rounds) * 100;
@@ -19,7 +19,7 @@ const Round = (props) => {
             <img className="Round--album-image" src={albumCoverArt} alt={albumName} />
             <div className="Round--artists-container">
                 {artists.map((artist, index) =>
-                    <Artist number={index + 1} key={index} name={artist.name} image={artist.image} setRoute={setRoute} answer={artist.isAnswer} setScore={setScore} results={results} setResults={setResults} />
+                    <Artist number={index + 1} key={index} name={artist.name} image={artist.image} setRoute={setRoute} answer={artist.isAnswer} results={results} setResults={setResults} />
                 )}
             </div>
         </div>
