@@ -1,0 +1,15 @@
+.ShareButton--button {
+    background-color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 5px;
+    height: 60px;
+    width: 60px;
+}
+
+.ShareButton--icon {
+    width: 50px;
+    height: 50px;
+}
