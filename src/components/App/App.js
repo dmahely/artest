@@ -13,7 +13,7 @@ const App = () => {
   const [rounds, setRounds] = useState(5);
   const [albums, setAlbums] = useState({albums: []});
   const [currentRound, setCurrentRound] = useState(1);
-  const [roundResults, setRoundResults] = useState([]);
+  const [results, setResults] = useState([]);
   const [score, setScore] = useState(0);
 
   const accessToken = {
@@ -42,7 +42,7 @@ const App = () => {
       <div className="App--container">
           {route === 'start' && <Start setRoute={setRoute} />}
           {route === 'roundSelection' && <RoundSelection setRoute={setRoute} setRounds={setRounds} setAlbums={setAlbums} currentRound={currentRound} />}
-          {route === 'play' && <Round setRoute={setRoute} albums={albums} rounds={rounds} setCurrentRound={setCurrentRound} currentRound={currentRound} score={score} setScore={setScore} />}
+          {route === 'play' && <Round setRoute={setRoute} albums={albums} rounds={rounds} setCurrentRound={setCurrentRound} currentRound={currentRound} score={score} setScore={setScore} results={results} setResults={setResults} />}
           {route === 'result' && <Result setRoute={setRoute} setCurrentRound={setCurrentRound} currentRound={currentRound} rounds={rounds} albums={albums} setAlbums={setAlbums} />}
           {route === 'end' && <FinalResult setRoute={setRoute} />}
       </div>
