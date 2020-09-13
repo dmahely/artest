@@ -33,11 +33,12 @@ const fetchArtistData = async(albums, currentRound) => {
     const artistImages = extractArtistData(artistImagesData);
     
     // map each round's artists obj to an artist image
-    albums.forEach((album, index) => {
-        album.artistsArray[currentRound - 1].image = artistImages[index];
+    const albumsWithImages = albums.map((album, index) => {
+        album.artistsArray[currentRound - 1].image = artistImages[index]
+        return album;
     });
 
-    return albums;
+    return albumsWithImages;
 
 }
 
