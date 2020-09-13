@@ -1,13 +1,14 @@
 import { extractAlbumData } from './extractAlbumData';
+import { wordBank } from './words';
 
 const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL;
 
+const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+
 const fetchFiveRandomAlbums = async() => {
 
-    // todo: add check for token validity
-
     const accessToken = JSON.parse(localStorage.getItem('token'));
-    const queryParam = 'one%'; // todo: to be randomized
+    const queryParam = `%${randomWord}%`; 
     const offsetParam = 0; // to get the most relevant albums
     const typeParam = 'album';
     const limitParam = 5;
