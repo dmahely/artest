@@ -16,7 +16,6 @@ const FinalResult = (props) => {
     const albumResults = getAlbumResults(albums, results);
 
     const handleTweetShare = () => {
-        console.log(twitterBaseURL);
         const tweet = `I got ${score} playing Artest! What about you? Check out the game on https://dmahely.github.io/artest/`;
         window.open(`${twitterBaseURL}?text=${tweet}`);
     }

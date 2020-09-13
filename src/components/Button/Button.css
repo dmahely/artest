@@ -1,4 +1,4 @@
-button {
+.Button--button {
     background-color: var(--white);
     border: none;
     border-radius: 8px;

@@ -1,4 +1,4 @@
-.circle {
+.Option--button {
     border-radius: 50%;
     width: 5em;
     height: 5em;
@@ -6,11 +6,16 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
+    background-color: var(--white);
+    border: none;
+    font: 24px 'Roboto-Thin';
+    margin: 0 auto;
+    padding: 7px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.circle p {
+.Option--button p {
     align-self: center;
 }
 
