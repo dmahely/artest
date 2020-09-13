@@ -1,9 +1,14 @@
 import React from 'react';
 import './Result.css'
 import { Button } from '../Button/Button';
+import { getCurrentRoundResult } from '../getCurrentRoundResult';
 
 const Result = (props) => {
-    const {setRoute, setCurrentRound, rounds, currentRound} = props;
+    const {setRoute, setCurrentRound, rounds, currentRound, albums, results} = props;
+
+    const roundResult = getCurrentRoundResult(albums, currentRound, results);
+
+    const { albumCoverArt, albumName, result, artistName } = roundResult;
 
     // for changing the route and updating current round
     const handleClick = (e) => {
@@ -16,10 +21,10 @@ const Result = (props) => {
     }
 
     return (
-        <div className="Result--container">
-            <img className="Result--album-image" src="https://images-na.ssl-images-amazon.com/images/I/71uR2KhRrZL._AC_SL1066_.jpg" alt="Album name" />
-            <p className="Result--result">{props.result || "Correct"}</p>
-            <p className="Result--payload">{props.payload || "Beyoncé is also the artist behind Lemonade (2016) and BEYONCÉ (2013)"}</p>
+        <div className={`Result--container ${result ? "correct" : "incorrect"}`}>
+            <img className="Result--album-image" src={albumCoverArt} alt={albumName} />
+            <p className="Result--result">{result ? "Correct" : "Incorrect"}</p>
+            <p className="Result--payload">{artistName} is the artist behind {albumName}</p>
             <Button text="Continue" onClick={() => handleClick()}/>
         </div>
         )

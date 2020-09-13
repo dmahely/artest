@@ -42,7 +42,7 @@ const App = () => {
           {route === 'start' && <Start setRoute={setRoute} />}
           {route === 'roundSelection' && <RoundSelection setRoute={setRoute} setRounds={setRounds} setAlbums={setAlbums} currentRound={currentRound} />}
           {route === 'play' && <Round setRoute={setRoute} albums={albums} rounds={rounds} setCurrentRound={setCurrentRound} currentRound={currentRound} results={results} setResults={setResults} />}
-          {route === 'result' && <Result setRoute={setRoute} setCurrentRound={setCurrentRound} currentRound={currentRound} rounds={rounds} albums={albums} setAlbums={setAlbums} />}
+          {route === 'result' && <Result setRoute={setRoute} setCurrentRound={setCurrentRound} currentRound={currentRound} rounds={rounds} albums={albums} setAlbums={setAlbums} results={results} />}
           {route === 'end' && <FinalResult setRoute={setRoute} results={results} albums={albums} />}
       </div>
     );
