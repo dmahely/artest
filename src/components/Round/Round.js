@@ -9,9 +9,9 @@ const Round = (props) => {
     // calculate current progress
     const width = (currentRound / rounds) * 100;
 
-    const albumCoverArt = albums.albums[currentRound - 1].albumObj.coverArt;
-    const albumName = albums.albums[currentRound - 1].albumObj.name;
-    const artists = albums.albums[currentRound - 1].artistsArray;
+    const albumCoverArt = albums[currentRound - 1].albumObj.coverArt;
+    const albumName = albums[currentRound - 1].albumObj.name;
+    const artists = albums[currentRound - 1].artistsArray;
 
     return (
         <div className="Round--container">

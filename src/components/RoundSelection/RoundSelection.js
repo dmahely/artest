@@ -13,20 +13,18 @@ const RoundSelection = (props) => {
         const getAlbums = async() => {
             // todo: structure these three calls in a better way
 
-            const albums = await fetchFiveRandomAlbums();
-            setAlbums({ albums });
+            const randomAlbums = await fetchFiveRandomAlbums();
 
-            const albumsWithArtistImages = await fetchArtistData(albums, currentRound);
-            setAlbums({albums: albumsWithArtistImages}); // bug todo: this makes me have to do albums.albums
+            const albumsWithArtistImages = await fetchArtistData(randomAlbums, currentRound);
 
-            const artistId = getCurrentRoundArtistId(albums, currentRound);
+            const artistId = getCurrentRoundArtistId(randomAlbums, currentRound);
 
-            const albumsWithRelatedArtists = await fetchRelatedArtists(albums, artistId, currentRound);
-            setAlbums({albums: albumsWithRelatedArtists}); // bug todo: this makes me have to do albums.albums
+            const albums = await fetchRelatedArtists(albumsWithArtistImages, artistId, currentRound);
+            setAlbums(albums);
         }
 
         getAlbums();
-    }, [setAlbums]);
+    }, [setAlbums, currentRound]);
 
     return (
         <div className="RoundSelection--container">
