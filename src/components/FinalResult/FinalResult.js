@@ -25,8 +25,7 @@ const FinalResult = (props) => {
         <div className="FinalResult--container">
             <div className="FinalResult--albums">
                 {albumResults.map((album, i) => {
-                    // todo: add FinalResult--album-cover className to this element
-                    return <img key={i} src={album.cover} alt="Album cover" className={album.result ? 'correct' : 'incorrect'}/>
+                    return <img key={i} src={album.cover} alt="Album cover" className={`FinalResult--single-album ${album.result ? 'correct' : 'incorrect'}`}/>
                 })}
             </div>
             <img src={scoreBackground} alt="background"/>

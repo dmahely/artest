@@ -1,8 +1,8 @@
-.FinalResult--albums > img {
+.FinalResult--single-album {
     width: 100px;
     height: 100px;
 }
 
-.incorrect {
+.FinalResult--single-album.incorrect {
     opacity: 50%;
 }
