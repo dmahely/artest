@@ -22,7 +22,9 @@ const fetchRelatedArtists = async(albums, artistId, currentRound) => {
     
     // add related artists to current round's artist array
     await relatedArtists.forEach(artist => {
-        albums[currentRound - 1].artistsArray.push(artist);
+        // random index between 0-2 to randmoize the index at which the artist will be added
+        const randomIndex = Math.floor(Math.random() * 3);
+        albums[currentRound - 1].artistsArray.splice(randomIndex, 0, artist);
     });
 
     return albums;
