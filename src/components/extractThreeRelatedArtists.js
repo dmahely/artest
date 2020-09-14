@@ -5,10 +5,10 @@ const extractThreeRelatedArtists = (data) => {
             id: artist.id,
             image: artist.images[0].url,
             isAnswer: false,
-        }
-        return artistObj
-    })
-    return relatedArtists
-}
+        };
+        return artistObj;
+    });
+    return relatedArtists;
+};
 
-export { extractThreeRelatedArtists }
+export { extractThreeRelatedArtists };

@@ -1,5 +1,5 @@
-import React from 'react'
-import './Progress.css'
+import React from 'react';
+import './Progress.css';
 
 const Progress = (props) => {
     return (
@@ -11,7 +11,7 @@ const Progress = (props) => {
                 {props.currentRound}/{props.rounds}
             </span>
         </div>
-    )
-}
+    );
+};
 
-export { Progress }
+export { Progress };

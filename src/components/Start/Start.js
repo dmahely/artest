@@ -1,10 +1,10 @@
-import React from 'react'
-import './Start.css'
-import logo from '../../assets/images/logo.png'
-import { Button } from '../Button/Button'
+import React from 'react';
+import './Start.css';
+import logo from '../../assets/images/logo.png';
+import { Button } from '../Button/Button';
 
 const Start = (props) => {
-    const { setRoute } = props
+    const { setRoute } = props;
 
     return (
         <div className="Start--container">
@@ -28,7 +28,7 @@ const Start = (props) => {
                 </a>
             </footer>
         </div>
-    )
-}
+    );
+};
 
-export { Start }
+export { Start };

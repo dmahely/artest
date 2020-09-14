@@ -6,18 +6,18 @@ const extractAlbumData = (data) => {
         const albumObj = {
             coverArt: album.images[0].url,
             name: album.name,
-        }
+        };
         const artistsArray = [
             {
                 name: album.artists[0].name,
                 id: album.artists[0].id,
                 isAnswer: true,
             },
-        ]
-        return { albumObj, artistsArray }
-    })
+        ];
+        return { albumObj, artistsArray };
+    });
 
-    return albums
-}
+    return albums;
+};
 
-export { extractAlbumData }
+export { extractAlbumData };

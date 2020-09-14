@@ -1,7 +1,7 @@
-import React from 'react'
-import './Round.css'
-import { Progress } from '../Progress/Progress.js'
-import { Artist } from '../Artist/Artist.js'
+import React from 'react';
+import './Round.css';
+import { Progress } from '../Progress/Progress.js';
+import { Artist } from '../Artist/Artist.js';
 
 const Round = (props) => {
     const {
@@ -11,14 +11,14 @@ const Round = (props) => {
         albums,
         results,
         setResults,
-    } = props
+    } = props;
 
     // calculate current progress
-    const width = (currentRound / rounds) * 100
+    const width = (currentRound / rounds) * 100;
 
-    const albumCoverArt = albums[currentRound - 1].albumObj.coverArt
-    const albumName = albums[currentRound - 1].albumObj.name
-    const artists = albums[currentRound - 1].artistsArray
+    const albumCoverArt = albums[currentRound - 1].albumObj.coverArt;
+    const albumName = albums[currentRound - 1].albumObj.name;
+    const artists = albums[currentRound - 1].artistsArray;
 
     return (
         <div className="Round--container">
@@ -47,7 +47,7 @@ const Round = (props) => {
                 ))}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export { Round }
+export { Round };

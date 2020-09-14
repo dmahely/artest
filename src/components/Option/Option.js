@@ -1,5 +1,5 @@
-import React from 'react'
-import './Option.css'
+import React from 'react';
+import './Option.css';
 
 const Option = (props) => {
     return (
@@ -9,7 +9,7 @@ const Option = (props) => {
         >
             <p>{props.text}</p>
         </button>
-    )
-}
+    );
+};
 
-export { Option }
+export { Option };

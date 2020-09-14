@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
-import './Result.css'
-import { Button } from '../Button/Button'
-import { getCurrentRoundResult } from '../getCurrentRoundResult'
-import { getCurrentRoundArtistId } from '../getCurrentRoundArtistId'
-import { fetchRelatedArtists } from '../fetchRelatedArtists'
+import React, { useEffect } from 'react';
+import './Result.css';
+import { Button } from '../Button/Button';
+import { getCurrentRoundResult } from '../getCurrentRoundResult';
+import { getCurrentRoundArtistId } from '../getCurrentRoundArtistId';
+import { fetchRelatedArtists } from '../fetchRelatedArtists';
 
 const Result = (props) => {
     const {
@@ -14,40 +14,40 @@ const Result = (props) => {
         albums,
         setAlbums,
         results,
-    } = props
+    } = props;
 
-    const roundResult = getCurrentRoundResult(albums, currentRound, results)
+    const roundResult = getCurrentRoundResult(albums, currentRound, results);
 
     useEffect(() => {
-        const albumsObj = albums
-        const nextRound = currentRound + 1
+        const albumsObj = albums;
+        const nextRound = currentRound + 1;
 
         const getNextRoundOptions = async () => {
-            const artistId = getCurrentRoundArtistId(albumsObj, nextRound)
+            const artistId = getCurrentRoundArtistId(albumsObj, nextRound);
 
             const albums = await fetchRelatedArtists(
                 albumsObj,
                 artistId,
                 nextRound
-            )
-            setAlbums(albums)
-        }
+            );
+            setAlbums(albums);
+        };
 
         // if this is not the last round
-        if (rounds >= nextRound) getNextRoundOptions()
-    }, [])
+        if (rounds >= nextRound) getNextRoundOptions();
+    }, []);
 
-    const { albumCoverArt, albumName, result, artistName } = roundResult
+    const { albumCoverArt, albumName, result, artistName } = roundResult;
 
     // for changing the route and updating current round
     const handleClick = (e) => {
         if (currentRound < rounds) {
-            setCurrentRound((currentRound) => currentRound + 1)
-            setRoute('play')
+            setCurrentRound((currentRound) => currentRound + 1);
+            setRoute('play');
         } else {
-            setRoute('end')
+            setRoute('end');
         }
-    }
+    };
 
     return (
         <div
@@ -64,7 +64,7 @@ const Result = (props) => {
             </p>
             <Button text="Continue" onClick={() => handleClick()} />
         </div>
-    )
-}
+    );
+};
 
-export { Result }
+export { Result };

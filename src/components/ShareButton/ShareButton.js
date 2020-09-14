@@ -1,5 +1,5 @@
-import React from 'react'
-import './ShareButton.css'
+import React from 'react';
+import './ShareButton.css';
 
 const ShareButton = (props) => {
     return (
@@ -10,7 +10,7 @@ const ShareButton = (props) => {
                 alt={props.icon}
             />
         </button>
-    )
-}
+    );
+};
 
-export { ShareButton }
+export { ShareButton };

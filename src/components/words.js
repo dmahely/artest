@@ -999,6 +999,6 @@ const wordBank = [
     'deafening',
     'fine',
     'erratic',
-]
+];
 
-export { wordBank }
+export { wordBank };
