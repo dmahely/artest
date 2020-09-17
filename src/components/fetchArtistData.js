@@ -4,8 +4,6 @@ const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL;
 
 const fetchArtistData = async(albums, currentRound) => {
 
-    // todo: add check for token validity
-
     const accessToken = JSON.parse(localStorage.getItem('token'));
 
     // get artist ids in a comma separated string
