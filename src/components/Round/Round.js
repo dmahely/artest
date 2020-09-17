@@ -7,7 +7,7 @@ const Round = (props) => {
     const {setRoute, rounds, currentRound, albums, setResults} = props;
 
     if(albums.length === 0) return null; // todo: return loading component
-
+    
     // calculate current progress
     const width = (currentRound / rounds) * 100;
 
@@ -21,7 +21,7 @@ const Round = (props) => {
             <img className="Round--album-image" src={albumCoverArt} alt={albumName} />
             <div className="Round--artists-container">
                 {artists.map((artist, index) =>
-                    <Artist number={index + 1} key={index} name={artist.name} image={artist.image} setRoute={setRoute} answer={artist.isAnswer} results={results} setResults={setResults} />
+                    <Artist number={index + 1} key={index} name={artist.name} image={artist.image} setRoute={setRoute} answer={artist.isAnswer} setResults={setResults} />
                 )}
             </div>
         </div>

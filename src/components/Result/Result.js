@@ -23,7 +23,7 @@ const Result = (props) => {
 
         // if this is not the last round
         if(rounds >= nextRound) getNextRoundOptions();
-    }, []);
+    }, []); // todo: go through all useEffects and review dependencies 
 
     const { albumCoverArt, albumName, result, artistName } = roundResult;
 

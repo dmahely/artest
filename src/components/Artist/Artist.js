@@ -2,7 +2,7 @@ import React from 'react';
 import './Artist.css';
 
 const Artist = (props) => {
-    const {setRoute, number, image, name, answer, results, setResults} = props;
+    const {setRoute, number, image, name, answer, setResults} = props;
 
     // for changing the number to a play icon on mouse enter
     const handleMouseEnter = (e) => {
