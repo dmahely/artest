@@ -1,18 +1,18 @@
-.Progress--container { 
-  min-width: 250px;
-  max-width: 400px;
-  background-color: var(--navy);
-  border-radius: 15px;
-  margin: 0 auto;
-  margin-bottom: 40px;
+.Progress--container {
+    min-width: 250px;
+    max-width: 400px;
+    background-color: var(--navy);
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-bottom: 40px;
 }
 
 .Progress--percentage {
-  font: 16px 'Roboto-Thin';
-  display: block;
-  height: 100%;
-  max-width: 100%;
-  background-color: var(--yellow);
-  border-radius: 15px;
-  cursor: default;
+    font: 16px 'Roboto-Thin';
+    display: block;
+    height: 100%;
+    max-width: 100%;
+    background-color: var(--yellow);
+    border-radius: 15px;
+    cursor: default;
 }

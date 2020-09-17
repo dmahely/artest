@@ -19,18 +19,18 @@
     align-self: center;
 }
 
-.navy { 
+.navy {
     background-color: var(--navy);
 }
 
-.yellow { 
+.yellow {
     background-color: var(--yellow);
 }
 
-.green { 
+.green {
     background-color: var(--green);
 }
 
-.pink { 
+.pink {
     background-color: var(--pink);
 }

@@ -998,7 +998,7 @@ const wordBank = [
     'arrogant',
     'deafening',
     'fine',
-    'erratic'
-]
+    'erratic',
+];
 
 export { wordBank };

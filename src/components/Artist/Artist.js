@@ -2,36 +2,44 @@ import React from 'react';
 import './Artist.css';
 
 const Artist = (props) => {
-    const {setRoute, number, image, name, answer, setResults} = props;
+    const { setRoute, number, image, name, answer, setResults } = props;
 
     // for changing the number to a play icon on mouse enter
     const handleMouseEnter = (e) => {
-        if(e.target.children.length) e.target.children.item(0).innerHTML = '▶︎';
+        if (e.target.children.length)
+            e.target.children.item(0).innerHTML = '▶︎';
     };
 
     // for changing the play icon back to a number on mouse leave
     const handleMouseLeave = (e) => {
-        if(e.target.children.length) e.target.children.item(0).innerHTML = props.number;
-    }
-    
+        if (e.target.children.length)
+            e.target.children.item(0).innerHTML = props.number;
+    };
+
     // for setting result in state and changing route
     const handleClick = (e) => {
         let result = false;
-        if(e.currentTarget.getAttribute('data-answer') === 'true') {
+        if (e.currentTarget.getAttribute('data-answer') === 'true') {
             result = true;
         }
 
-        setResults(results => [...results, result])
+        setResults((results) => [...results, result]);
         setRoute('result');
-    }
+    };
 
     return (
-        <button className="Artist--container" onClick={handleClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} data-answer={answer}>
+        <button
+            className="Artist--container"
+            onClick={handleClick}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            data-answer={answer}
+        >
             <span className="Artist--number">{number}</span>
             <img className="Artist--image" src={image} alt={name} />
             <span className="Artist--name">{name}</span>
         </button>
     );
-}
+};
 
 export { Artist };

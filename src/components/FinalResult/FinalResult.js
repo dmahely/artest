@@ -18,27 +18,41 @@ const FinalResult = (props) => {
     const handleTweetShare = () => {
         const tweet = `I got ${score}/${rounds} playing Artest! What about you? Check out the game on https://dmahely.github.io/artest/`;
         window.open(`${twitterBaseURL}?text=${tweet}`);
-    }
-    
+    };
+
     return (
         <div className="FinalResult--container">
             <div className="FinalResult--albums">
                 {albumResults.map((album, i) => {
-                    return <img key={i} src={album.cover} alt="Album cover" className={`FinalResult--single-album ${album.result ? 'correct' : 'incorrect'}`}/>
+                    return (
+                        <img
+                            key={i}
+                            src={album.cover}
+                            alt="Album cover"
+                            className={`FinalResult--single-album ${
+                                album.result ? 'correct' : 'incorrect'
+                            }`}
+                        />
+                    );
                 })}
             </div>
 
             <p className="FinalResult--user-text">Awesome job!</p>
             <div className="FinalResult--score-container">
-                <img src={scoreBackground} alt="background"/>
-                <p className="FinalResult--score-text">{score}
-                <span className="FinalResult--score-text-span"> out of </span> 
-                {rounds}</p>
+                <img src={scoreBackground} alt="background" />
+                <p className="FinalResult--score-text">
+                    {score}
+                    <span className="FinalResult--score-text-span">
+                        {' '}
+                        out of{' '}
+                    </span>
+                    {rounds}
+                </p>
             </div>
             <Button text="Play again" onClick={() => setRoute('start')} />
             <ShareButton icon={twitterLogo} onClick={handleTweetShare} />
         </div>
     );
-}
+};
 
 export { FinalResult };
