@@ -4,7 +4,7 @@ const getFinalScore = (results) => {
     const calculateScore = (acc, curr) => (curr ? acc + 1 : acc);
 
     const score = Number(results.reduce(calculateScore));
-    return `${score} out of ${rounds}`;
+    return [score, rounds];
 };
 
 export { getFinalScore };

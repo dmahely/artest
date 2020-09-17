@@ -1,8 +1,40 @@
+.FinalResult--container {
+    padding: 20px 0;
+}
+
+.FinalResult--albums {
+    display: flex;
+    justify-content: space-around;
+}
+
 .FinalResult--single-album {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 
 .FinalResult--single-album.incorrect {
     opacity: 50%;
+}
+
+.FinalResult--user-text {
+    font: 30px 'Roboto-Regular';
+    color: var(--black);
+}
+
+.FinalResult--score-container {
+    margin-top: 20px;
+}
+
+.FinalResult--score-text {
+    display: inline-block;
+    position: relative;
+    top: -75px;
+    right: 170px;
+    color: var(--black);
+    font: 40px 'Roboto-Regular';
+}
+
+.FinalResult--score-text-span {
+    color: var(--black);
+    font: 18px 'Roboto-Thin';
 }

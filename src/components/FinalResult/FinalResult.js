@@ -12,11 +12,11 @@ const twitterBaseURL = 'https://twitter.com/intent/tweet';
 const FinalResult = (props) => {
     const { setRoute, results, albums } = props;
 
-    const score = getFinalScore(results);
+    const [score, rounds] = getFinalScore(results);
     const albumResults = getAlbumResults(albums, results);
 
     const handleTweetShare = () => {
-        const tweet = `I got ${score} playing Artest! What about you? Check out the game on https://dmahely.github.io/artest/`;
+        const tweet = `I got ${score}/${rounds} playing Artest! What about you? Check out the game on https://dmahely.github.io/artest/`;
         window.open(`${twitterBaseURL}?text=${tweet}`);
     };
 
@@ -36,8 +36,19 @@ const FinalResult = (props) => {
                     );
                 })}
             </div>
-            <img src={scoreBackground} alt="background" />
-            <p>{score}</p>
+
+            <p className="FinalResult--user-text">Awesome job!</p>
+            <div className="FinalResult--score-container">
+                <img src={scoreBackground} alt="background" />
+                <p className="FinalResult--score-text">
+                    {score}
+                    <span className="FinalResult--score-text-span">
+                        {' '}
+                        out of{' '}
+                    </span>
+                    {rounds}
+                </p>
+            </div>
             <Button text="Play again" onClick={() => setRoute('start')} />
             <ShareButton icon={twitterLogo} onClick={handleTweetShare} />
         </div>

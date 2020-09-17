@@ -2,15 +2,7 @@ import React from 'react';
 import './Artist.css';
 
 const Artist = (props) => {
-    const {
-        setRoute,
-        number,
-        image,
-        name,
-        answer,
-        results,
-        setResults,
-    } = props;
+    const { setRoute, number, image, name, answer, setResults } = props;
 
     // for changing the number to a play icon on mouse enter
     const handleMouseEnter = (e) => {
@@ -23,11 +15,11 @@ const Artist = (props) => {
         if (e.target.children.length)
             e.target.children.item(0).innerHTML = props.number;
     };
-    // todo: make sure clicking on container doesn't click on other elements
-    // for setting score and result in state and changing route
+
+    // for setting result in state and changing route
     const handleClick = (e) => {
         let result = false;
-        if (e.target.getAttribute('data-answer') === 'true') {
+        if (e.currentTarget.getAttribute('data-answer') === 'true') {
             result = true;
         }
 
