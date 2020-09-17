@@ -4,7 +4,9 @@ import { Progress } from '../Progress/Progress.js';
 import { Artist } from '../Artist/Artist.js';
 
 const Round = (props) => {
-    const {setRoute, rounds, currentRound, albums, results, setResults} = props;
+    const {setRoute, rounds, currentRound, albums, setResults} = props;
+
+    if(albums.length === 0) return null; // todo: return loading component
 
     // calculate current progress
     const width = (currentRound / rounds) * 100;

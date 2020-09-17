@@ -9,9 +9,11 @@ import { fetchAccessToken } from '../fetchAccessToken';
 import { isAccessTokenValid } from '../isAccessTokenValid';
 
 const App = () => {
+
+  // todo: refactor to look nicer, maybe in a useReducer
   const [route, setRoute] = useState('start');
   const [rounds, setRounds] = useState(5);
-  const [albums, setAlbums] = useState({albums: []});
+  const [albums, setAlbums] = useState([]);
   const [currentRound, setCurrentRound] = useState(1);
   const [results, setResults] = useState([]);
 
