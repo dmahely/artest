@@ -3,11 +3,11 @@
     height: 100vh;
 }
 
-.Result--album-image.correct {
+.Result--container.correct {
     background: linear-gradient(180deg, var(--white) 0%, var(--green) 100%);
 }
 
-.Result--album-image.incorrect {
+.Result--container.incorrect {
     background: linear-gradient(180deg, var(--white) 0%, var(--pink) 100%);
 }
 

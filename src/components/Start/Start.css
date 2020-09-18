@@ -46,6 +46,7 @@
 .Start--spotify-text {
     color: var(--green);
     font: 13px 'Roboto-Regular';
+    margin: 5px;
 }
 
 .Start--api-status {

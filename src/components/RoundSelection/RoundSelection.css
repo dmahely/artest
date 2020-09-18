@@ -3,6 +3,7 @@
 }
 
 .RoundSelection--options-container {
+    margin: 10px;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
@@ -10,5 +11,4 @@
 
 .RoundSelection--question {
     font: 26px 'Roboto-Thin';
-    padding-top: 50px;
 }
