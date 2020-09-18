@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import './Result.css';
 import { Button } from '../Button/Button';
 import { getCurrentRoundResult } from '../getCurrentRoundResult';
-import { getCurrentRoundArtistId } from '../getCurrentRoundArtistId';
-import { fetchRelatedArtists } from '../fetchRelatedArtists';
+import { getNextRoundArtistOptions } from '../getNextRoundArtistOptions';
 
 const Result = (props) => {
     const {
@@ -23,14 +22,11 @@ const Result = (props) => {
         const nextRound = currentRound + 1;
 
         const getNextRoundOptions = async () => {
-            const artistId = getCurrentRoundArtistId(albumsObj, nextRound);
-
-            const albums = await fetchRelatedArtists(
+            const artists = await getNextRoundArtistOptions(
                 albumsObj,
-                artistId,
                 nextRound
             );
-            setAlbums(albums);
+            setAlbums(artists);
         };
 
         // if this is not the last round
