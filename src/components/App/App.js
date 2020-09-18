@@ -7,6 +7,7 @@ import { Result } from '../Result/Result';
 import { FinalResult } from '../FinalResult/FinalResult';
 import { fetchAccessToken } from '../fetchAccessToken';
 import { isAccessTokenValid } from '../isAccessTokenValid';
+import { saveAccessToken } from '../saveAccessToken';
 
 const App = () => {
     // todo: refactor to look nicer, maybe in a useReducer
@@ -16,26 +17,18 @@ const App = () => {
     const [currentRound, setCurrentRound] = useState(1);
     const [results, setResults] = useState([]);
 
-    const accessToken = {
-        token: null,
-        expires_at: null,
-    };
-
     useEffect(() => {
-        // get access token and save it in localStorage
-
+        // handle getting and refreshing access token
+        // then saving it in localStorage
         const getToken = async () => {
             if (!(await isAccessTokenValid())) {
                 const token = await fetchAccessToken();
-                localStorage.setItem('token', JSON.stringify(token.token));
-                localStorage.setItem(
-                    'expiry',
-                    JSON.stringify(token.expires_at)
-                );
+                saveAccessToken(token);
             }
         };
+
         getToken();
-    }, [accessToken]);
+    }, []);
 
     return (
         <div className="App--container">
