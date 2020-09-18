@@ -27,6 +27,7 @@
     width: 50px;
     max-height: 50px;
     margin-right: 20px;
+    background-color: var(--dark-gray);
 }
 
 .Artist--name {

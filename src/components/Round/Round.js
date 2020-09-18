@@ -23,6 +23,7 @@ const Round = (props) => {
                 rounds={rounds}
             />
             <img
+                loading="lazy"
                 className="Round--album-image"
                 src={albumCoverArt}
                 alt={albumName}

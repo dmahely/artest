@@ -3,11 +3,11 @@
     height: 100vh;
 }
 
-.correct {
+.Result--album-image.correct {
     background: linear-gradient(180deg, var(--white) 0%, var(--green) 100%);
 }
 
-.incorrect {
+.Result--album-image.incorrect {
     background: linear-gradient(180deg, var(--white) 0%, var(--pink) 100%);
 }
 
@@ -15,6 +15,7 @@
     margin: 80px 0 0 0;
     width: 200px;
     height: 200px;
+    background-color: var(--dark-gray);
 }
 
 .Result--result {

@@ -5,6 +5,7 @@
     width: 200px;
     height: 200px;
     margin-bottom: 20px;
+    background-color: var(--dark-gray);
 }
 
 .Round--artists-container {

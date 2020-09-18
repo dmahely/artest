@@ -10,10 +10,11 @@
 .FinalResult--single-album {
     width: 150px;
     height: 150px;
+    background-color: var(--dark-gray);
 }
 
 .FinalResult--single-album.incorrect {
-    opacity: 50%;
+    opacity: 20%;
 }
 
 .FinalResult--user-text {
