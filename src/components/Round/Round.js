@@ -6,14 +6,14 @@ import { Artist } from '../Artist/Artist.js';
 const Round = (props) => {
     const { setRoute, rounds, currentRound, albums, setResults } = props;
 
-    if (albums.length === 0) return null; // todo: return loading component
+    if (!albums || albums.length === 0) return null; // todo: return loading component
 
     // calculate current progress
     const width = (currentRound / rounds) * 100;
 
-    const albumCoverArt = albums[currentRound - 1].albumObj.coverArt;
-    const albumName = albums[currentRound - 1].albumObj.name;
-    const artists = albums[currentRound - 1].artistsArray;
+    const albumCoverArt = albums[currentRound - 1].album.coverArt;
+    const albumName = albums[currentRound - 1].album.name;
+    const artists = albums[currentRound - 1].artists;
 
     return (
         <div className="Round--container">

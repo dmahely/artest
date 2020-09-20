@@ -1,5 +1,3 @@
-import { extractArtistData } from './extractArtistData';
-
 const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL;
 
 const fetchArtistData = async (albums, currentRound) => {
@@ -8,7 +6,7 @@ const fetchArtistData = async (albums, currentRound) => {
     // get artist ids in a comma separated string
     const artistIds = albums
         .map((round) => {
-            return round.artistsArray[currentRound - 1].id;
+            return round.artists[currentRound - 1].id;
         })
         .join(',');
 
@@ -29,15 +27,8 @@ const fetchArtistData = async (albums, currentRound) => {
     });
 
     const artistImagesData = await artistImagesResponse.json();
-    const artistImages = extractArtistData(artistImagesData);
 
-    // map each round's artists obj to an artist image
-    const albumsWithImages = albums.map((album, index) => {
-        album.artistsArray[currentRound - 1].image = artistImages[index];
-        return album;
-    });
-
-    return albumsWithImages;
+    return artistImagesData;
 };
 
 export { fetchArtistData };

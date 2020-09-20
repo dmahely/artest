@@ -1,5 +1,5 @@
-const getAlbumResults = (albums, results) => {
-    const covers = albums.map((album) => album.albumObj.coverArt);
+const getAlbumResults = (rounds, results) => {
+    const covers = rounds.map((album) => album.album.coverArt);
 
     let finalResults = [];
     for (let i = 0; i < covers.length; i++) {

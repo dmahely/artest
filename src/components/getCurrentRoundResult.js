@@ -1,8 +1,8 @@
-const getCurrentRoundResult = (albums, currentRound, results) => {
-    const albumCoverArt = albums[currentRound - 1].albumObj.coverArt;
-    const albumName = albums[currentRound - 1].albumObj.name;
+const getCurrentRoundResult = (rounds, currentRound, results) => {
+    const albumCoverArt = rounds[currentRound - 1].album.coverArt;
+    const albumName = rounds[currentRound - 1].album.name;
     const result = results[currentRound - 1];
-    const artistObject = albums[currentRound - 1].artistsArray.filter(
+    const artistObject = rounds[currentRound - 1].artists.filter(
         (artist) => artist.isAnswer
     )[0];
     const artistName = artistObject.name;

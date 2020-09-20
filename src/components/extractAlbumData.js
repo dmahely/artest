@@ -1,20 +1,24 @@
 // maps over GET albums endpoint response data, extracts album and artist details in an object
-// returns an array of objects
+// returns an array of albums and artists
 
 const extractAlbumData = (data) => {
-    const albums = data.albums.items.map((album) => {
-        const albumObj = {
-            coverArt: album.images[0].url,
-            name: album.name,
+    const items = data.albums.items;
+
+    const albums = items.map((albumObj) => {
+        const album = {
+            coverArt: albumObj.images[0].url,
+            name: albumObj.name,
         };
-        const artistsArray = [
+
+        const artists = [
             {
-                name: album.artists[0].name,
-                id: album.artists[0].id,
+                name: albumObj.artists[0].name,
+                id: albumObj.artists[0].id,
                 isAnswer: true,
             },
         ];
-        return { albumObj, artistsArray };
+
+        return { album, artists };
     });
 
     return albums;

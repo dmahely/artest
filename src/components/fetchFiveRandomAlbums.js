@@ -1,4 +1,3 @@
-import { extractAlbumData } from './extractAlbumData';
 import { wordBank } from './words';
 
 const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL;
@@ -33,9 +32,8 @@ const fetchFiveRandomAlbums = async () => {
     });
 
     const albumsData = await albumsResponse.json();
-    const albums = extractAlbumData(albumsData);
 
-    return albums;
+    return albumsData;
 };
 
 export { fetchFiveRandomAlbums };

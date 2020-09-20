@@ -1,5 +1,5 @@
-const getRoundArtistId = (albums, currentRound) => {
-    const artistId = albums[currentRound - 1].artistsArray[0].id;
+const getRoundArtistId = (rounds, currentRound) => {
+    const artistId = rounds[currentRound - 1].artists[0].id;
     return artistId;
 };
 
