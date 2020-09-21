@@ -1,3 +1,14 @@
+# Artest
+
+Artest is a music quiz game built with ReactJS and powered by the Spotify API. Players can test their musical knowledge by guessing which artist the album belongs to.
+
+Features:
+
+-   Selecting how many rounds to play 🎱
+-   Getting musical trivia after each round 👁
+-   Hundreds of albums and artists as questions 👩‍🎤
+-   Sharing results to social media 📲
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
