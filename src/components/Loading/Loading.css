@@ -1,0 +1,21 @@
+.Loading--container {
+    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.Loading--emoji {
+    display: inline-block;
+    animation: rotation 5s infinite linear;
+    margin: 5px;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}

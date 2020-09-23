@@ -2,11 +2,12 @@ import React from 'react';
 import './Round.css';
 import { Progress } from '../Progress/Progress.js';
 import { Artist } from '../Artist/Artist.js';
+import { Loading } from '../Loading/Loading.js';
 
 const Round = (props) => {
     const { setRoute, rounds, currentRound, albums, setResults } = props;
 
-    if (!albums || albums.length === 0) return null; // todo: return loading component
+    if (!albums || albums.length === 0) return <Loading />;
 
     // calculate current progress
     const width = (currentRound / rounds) * 100;
