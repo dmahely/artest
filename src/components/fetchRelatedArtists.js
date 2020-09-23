@@ -1,8 +1,7 @@
-import { extractThreeRelatedArtists } from './extractThreeRelatedArtists';
-
+// fetches related artists for the passed in artist id
 const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL;
 
-const fetchRelatedArtists = async (albums, artistId, currentRound) => {
+const fetchRelatedArtists = async (artistId) => {
     const accessToken = JSON.parse(localStorage.getItem('token'));
 
     // append params to baseURL
@@ -12,7 +11,7 @@ const fetchRelatedArtists = async (albums, artistId, currentRound) => {
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + accessToken,
+            Authorization: `Bearer ${accessToken}`,
         },
     });
 
