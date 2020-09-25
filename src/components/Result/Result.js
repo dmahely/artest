@@ -31,9 +31,18 @@ const Result = (props) => {
 
         // if this is not the last round
         if (rounds >= nextRound) getNextRoundOptions();
-    }, []); // todo: go through all useEffects and review dependencies
+    const {
+        albumCoverArt,
+        albumName,
+        result,
+        artistName,
+        albumReleaseYear,
+    } = roundResult;
 
-    const { albumCoverArt, albumName, result, artistName } = roundResult;
+    let description = `${artistName} is the artist behind ${albumName}`;
+    if (result) {
+        description = `${albumName} was released by ${artistName} in ${albumReleaseYear}`;
+    }
 
     // for changing the route and updating current round
     const handleClick = (e) => {
@@ -55,9 +64,7 @@ const Result = (props) => {
                 alt={albumName}
             />
             <p className="Result--result">{result ? 'Correct' : 'Incorrect'}</p>
-            <p className="Result--payload">
-                {artistName} is the artist behind {albumName}
-            </p>
+            <p className="Result--payload">{description}</p>
             <Button text="Continue" onClick={() => handleClick()} />
         </div>
     );

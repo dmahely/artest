@@ -8,6 +8,8 @@ const extractAlbumData = (data) => {
         const album = {
             coverArt: albumObj.images[0].url,
             name: albumObj.name,
+            id: albumObj.id,
+            releaseYear: albumObj.release_date.slice(0, 4),
         };
 
         const artists = [
