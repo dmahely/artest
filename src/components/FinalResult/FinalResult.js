@@ -48,7 +48,11 @@ const FinalResult = (props) => {
 
             <p className="FinalResult--user-text">{description}</p>
             <div className="FinalResult--score-container">
-                <img src={scoreBackground} alt="background" />
+                <img
+                    className="FinalResult--score-background"
+                    src={scoreBackground}
+                    alt="background"
+                />
                 <p className="FinalResult--score-text">
                     {score}
                     <span className="FinalResult--score-text-span">
@@ -59,8 +63,13 @@ const FinalResult = (props) => {
                 </p>
             </div>
             <Button text="Play again" onClick={() => setRoute('start')} />
-            <ShareButton icon={twitterLogo} onClick={handleTweetShare} />
-            <ShareButton icon={facebookLogo} onClick={handleFacebookShare} />
+            <div className="FinalResult--social-container">
+                <ShareButton icon={twitterLogo} onClick={handleTweetShare} />
+                <ShareButton
+                    icon={facebookLogo}
+                    onClick={handleFacebookShare}
+                />
+            </div>
         </div>
     );
 };

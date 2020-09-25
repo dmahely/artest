@@ -4,13 +4,15 @@
 
 .FinalResult--albums {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .FinalResult--single-album {
     width: 150px;
     height: 150px;
     background-color: var(--dark-gray);
+    margin: 5px;
 }
 
 .FinalResult--single-album.incorrect {
@@ -26,6 +28,14 @@
     margin-top: 20px;
 }
 
+.FinalResult--social-container {
+    margin-top: 20px;
+}
+
+.FinalResult--social-container > button {
+    margin: 0 20px;
+}
+
 .FinalResult--score-text {
     display: inline-block;
     position: relative;
@@ -38,4 +48,22 @@
 .FinalResult--score-text-span {
     color: var(--black);
     font: 18px 'Roboto-Thin';
+}
+
+@media only screen and (max-width: 800px) {
+    .FinalResult--single-album {
+        width: 100px;
+        height: 100px;
+    }
+
+    .FinalResult--score-background {
+        width: 200px;
+        height: 200px;
+    }
+
+    .FinalResult--score-text {
+        top: -85px;
+        right: 150px;
+        font: 35px 'Roboto-Regular';
+    }
 }
