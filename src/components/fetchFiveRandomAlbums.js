@@ -27,11 +27,17 @@ const fetchFiveRandomAlbums = async () => {
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + accessToken,
+            Authorization: `Bearer ${accessToken}`,
         },
     });
 
-    const albumsData = await albumsResponse.json();
+    let albumsData;
+    try {
+        albumsData = await albumsResponse.json();
+    } catch (err) {
+        console.log(err);
+        throw new Error(err);
+    }
 
     return albumsData;
 };

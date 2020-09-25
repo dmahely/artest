@@ -4,12 +4,12 @@ const apiTokenURL = process.env.REACT_APP_SPOTIFY_ACCESS_TOKEN_URL,
 
 const fetchAccessToken = async () => {
     // encodes client id and secret to base64
-    const authParam = btoa(client_id + ':' + client_secret);
+    const authParam = btoa(`${client_id}:${client_secret}`);
     const tokenResponse = await fetch(apiTokenURL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            Authorization: 'Basic ' + authParam,
+            Authorization: `Basic ${authParam}`,
         },
         body: new URLSearchParams({
             grant_type: 'client_credentials',
