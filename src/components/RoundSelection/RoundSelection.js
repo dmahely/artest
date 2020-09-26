@@ -8,7 +8,7 @@ const RoundSelection = (props) => {
 
     useEffect(() => {
         const getAlbums = async () => {
-            const albums = await prepareFiveRoundsData(currentRound);
+            const albums = await prepareFiveRoundsData();
             setAlbums(albums);
         };
 

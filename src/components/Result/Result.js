@@ -4,6 +4,7 @@ import { Button } from '../Button/Button';
 import { getCurrentRoundResult } from '../getCurrentRoundResult';
 import { getNextRoundArtistOptions } from '../getNextRoundArtistOptions';
 import { setNextRoundArtistOptions } from '../setNextRoundArtistOptions';
+import { prepareFiveRoundsData } from '../prepareFiveRoundsData';
 
 const Result = (props) => {
     const {
@@ -37,9 +38,18 @@ const Result = (props) => {
             setAlbums(updatedAlbums);
         };
 
+        const getFiveMoreRounds = async () => {
+            const newAlbums = await prepareFiveRoundsData();
+            setAlbums((albums) => [...albums, ...newAlbums]);
+        };
+
+        // if we have five more rounds
+        if (currentRound % 5 === 0 && rounds >= nextRound) {
+            getFiveMoreRounds();
+        }
         // if this is not the last round
-        if (rounds >= nextRound) getNextRoundOptions();
-    }, [albums, currentRound, rounds, setAlbums]);
+        else if (rounds >= nextRound) getNextRoundOptions();
+    });
     const {
         albumCoverArt,
         albumName,

@@ -5,18 +5,16 @@ import { getRoundArtistId } from './getRoundArtistId';
 import { extractAlbumData } from './extractAlbumData';
 import { extractArtistData } from './extractArtistData';
 import { extractThreeRelatedArtists } from './extractThreeRelatedArtists';
+import { setNextRoundArtistOptions } from './setNextRoundArtistOptions';
 
 // gets 5 random albums with related artists
 
-const prepareFiveRoundsData = async (currentRound) => {
+const prepareFiveRoundsData = async (currentRound = 1) => {
     const randomAlbumsData = await fetchFiveRandomAlbums();
 
     const randomAlbums = extractAlbumData(randomAlbumsData);
 
-    const albumsWithArtistImages = await fetchArtistData(
-        randomAlbums,
-        currentRound
-    );
+    const albumsWithArtistImages = await fetchArtistData(randomAlbums);
 
     const artistImages = extractArtistData(albumsWithArtistImages);
 
@@ -32,14 +30,13 @@ const prepareFiveRoundsData = async (currentRound) => {
 
     const relatedArtists = extractThreeRelatedArtists(relatedArtistsData);
 
-    // add related artists to current round's artist array
-    relatedArtists.forEach((artist) => {
-        // random index between 0-2 to randmoize the index at which the artist will be added
-        const randomIndex = Math.floor(Math.random() * 3);
-        randomAlbums[currentRound - 1].artists.splice(randomIndex, 0, artist);
-    });
+    const updatedAlbums = setNextRoundArtistOptions(
+        albumsWithImages,
+        relatedArtists,
+        currentRound
+    );
 
-    return albumsWithImages;
+    return updatedAlbums;
 };
 
 export { prepareFiveRoundsData };
