@@ -6,7 +6,7 @@ const extractThreeRelatedArtists = (data) => {
             name: artist.name,
             id: artist.id,
             isAnswer: false,
-            image: artist.images[0].url,
+            image: artist.images.length ? artist.images[0].url : '',
         };
         return artistObj;
     });
