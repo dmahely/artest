@@ -62,7 +62,7 @@ const FinalResult = (props) => {
                     {rounds}
                 </p>
             </div>
-            <Button text="Play again" onClick={() => setRoute('start')} />
+            <Button text="Play again" onClick={() => setRoute('cleanup')} />
             <div className="FinalResult--social-container">
                 <ShareButton icon={twitterLogo} onClick={handleTweetShare} />
                 <ShareButton

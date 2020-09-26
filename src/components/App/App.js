@@ -5,6 +5,7 @@ import { RoundSelection } from '../RoundSelection/RoundSelection';
 import { Round } from '../Round/Round';
 import { Result } from '../Result/Result';
 import { FinalResult } from '../FinalResult/FinalResult';
+import { CleanUp } from '../CleanUp/CleanUp';
 import { fetchAccessToken } from '../fetchAccessToken';
 import { isAccessTokenValid } from '../isAccessTokenValid';
 import { saveAccessToken } from '../saveAccessToken';
@@ -67,6 +68,15 @@ const App = () => {
                     setRoute={setRoute}
                     results={results}
                     albums={albums}
+                />
+            )}
+            {route === 'cleanup' && (
+                <CleanUp
+                    setRoute={setRoute}
+                    setRounds={setRounds}
+                    setAlbums={setAlbums}
+                    setCurrentRound={setCurrentRound}
+                    setResults={setResults}
                 />
             )}
         </div>
