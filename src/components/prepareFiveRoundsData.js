@@ -28,11 +28,7 @@ const prepareFiveRoundsData = async (currentRound) => {
 
     const artistId = getRoundArtistId(randomAlbums, currentRound);
 
-    const relatedArtistsData = await fetchRelatedArtists(
-        albumsWithImages,
-        artistId,
-        currentRound
-    );
+    const relatedArtistsData = await fetchRelatedArtists(artistId);
 
     const relatedArtists = extractThreeRelatedArtists(relatedArtistsData);
 

@@ -3,6 +3,7 @@ import './Result.css';
 import { Button } from '../Button/Button';
 import { getCurrentRoundResult } from '../getCurrentRoundResult';
 import { getNextRoundArtistOptions } from '../getNextRoundArtistOptions';
+import { setNextRoundArtistOptions } from '../setNextRoundArtistOptions';
 
 const Result = (props) => {
     const {
@@ -26,11 +27,19 @@ const Result = (props) => {
                 albumsObj,
                 nextRound
             );
-            setAlbums(artists);
+
+            const updatedAlbums = setNextRoundArtistOptions(
+                albumsObj,
+                artists,
+                nextRound
+            );
+
+            setAlbums(updatedAlbums);
         };
 
         // if this is not the last round
         if (rounds >= nextRound) getNextRoundOptions();
+    }, [albums, currentRound, rounds, setAlbums]);
     const {
         albumCoverArt,
         albumName,

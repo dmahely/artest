@@ -1,10 +1,13 @@
 import { getRoundArtistId } from './getRoundArtistId';
 import { fetchRelatedArtists } from './fetchRelatedArtists';
+import { extractThreeRelatedArtists } from './extractThreeRelatedArtists';
 
 const getNextRoundArtistOptions = async (albumsObj, nextRound) => {
     const artistId = getRoundArtistId(albumsObj, nextRound);
 
-    const artists = await fetchRelatedArtists(albumsObj, artistId, nextRound);
+    const artistsResponse = await fetchRelatedArtists(artistId);
+
+    const artists = extractThreeRelatedArtists(artistsResponse);
 
     return artists;
 };
