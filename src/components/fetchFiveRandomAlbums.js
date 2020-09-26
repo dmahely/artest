@@ -2,10 +2,10 @@ import { wordBank } from './words';
 
 const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL;
 
-const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-
 const fetchFiveRandomAlbums = async () => {
+    const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
     const accessToken = JSON.parse(localStorage.getItem('token'));
+
     const queryParam = `%${randomWord}%`;
     const offsetParam = 0; // to get the most relevant albums
     const typeParam = 'album';
