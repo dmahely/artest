@@ -7,7 +7,14 @@ import { Loading } from '../Loading/Loading.js';
 const Round = (props) => {
     const { setRoute, rounds, currentRound, albums, setResults } = props;
 
-    if (!albums || albums.length === 0) return <Loading />;
+    // returns loading component if any data we need is still not set in state
+    // usually whenever data in state is prepped or when related artists fetch is late
+    if (
+        albums.length === 0 ||
+        !albums[currentRound - 1] ||
+        albums[currentRound - 1].length < 4
+    )
+        return <Loading />;
 
     // calculate current progress
     const width = (currentRound / rounds) * 100;
