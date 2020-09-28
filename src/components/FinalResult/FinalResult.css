@@ -26,6 +26,14 @@
 
 .FinalResult--score-container {
     margin-top: 20px;
+    margin-bottom: 60px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 25px;
+}
+
+.FinalResult--score-background {
+    grid-column-start: 1;
 }
 
 .FinalResult--social-container {
@@ -37,11 +45,8 @@
 }
 
 .FinalResult--score-text {
-    display: inline-block;
-    position: relative;
-    top: -75px;
-    right: 170px;
     color: var(--black);
+    grid-column-start: 1;
     font: 40px 'Roboto-Regular';
 }
 
@@ -56,14 +61,7 @@
         height: 100px;
     }
 
-    .FinalResult--score-background {
-        width: 200px;
-        height: 200px;
-    }
-
     .FinalResult--score-text {
-        top: -85px;
-        right: 150px;
         font: 35px 'Roboto-Regular';
     }
 }
