@@ -29,11 +29,12 @@
     margin-bottom: 60px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 25px;
+    place-items: center;
 }
 
 .FinalResult--score-background {
     grid-column-start: 1;
+    grid-row-start: 1;
 }
 
 .FinalResult--social-container {
@@ -47,6 +48,7 @@
 .FinalResult--score-text {
     color: var(--black);
     grid-column-start: 1;
+    grid-row-start: 1;
     font: 40px 'Roboto-Regular';
 }
 
