@@ -3,9 +3,7 @@ import './Start.css';
 import logo from '../../assets/images/logo.png';
 import { Button } from '../Button/Button';
 
-const Start = (props) => {
-    const { setRoute } = props;
-
+const Start = ({ setRoute }) => {
     return (
         <div className="Start--container">
             <div className="Start--top-shape"></div>

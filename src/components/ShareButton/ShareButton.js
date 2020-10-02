@@ -1,14 +1,10 @@
 import React from 'react';
 import './ShareButton.css';
 
-const ShareButton = (props) => {
+const ShareButton = ({ icon, onClick }) => {
     return (
-        <button className="ShareButton--button" onClick={props.onClick}>
-            <img
-                className="ShareButton--icon"
-                src={props.icon}
-                alt={props.icon}
-            />
+        <button className="ShareButton--button" onClick={onClick}>
+            <img className="ShareButton--icon" src={icon} alt={icon} />
         </button>
     );
 };

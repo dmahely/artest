@@ -13,9 +13,7 @@ const twitterBaseURL = 'https://twitter.com/intent/tweet';
 const facebookBaseURL =
     'https://www.facebook.com/sharer/sharer.php?u=example.org';
 
-const FinalResult = (props) => {
-    const { setRoute, results, albums } = props;
-
+const FinalResult = ({ setRoute, results, albums }) => {
     const [score, rounds] = getFinalScore(results);
     const albumResults = getAlbumResults(albums, results);
     const description = getResultDescription(score, rounds);

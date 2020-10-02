@@ -3,9 +3,7 @@ import './RoundSelection.css';
 import { Option } from '../Option/Option';
 import { prepareFiveRoundsData } from '../prepareFiveRoundsData';
 
-const RoundSelection = (props) => {
-    const { setRoute, setRounds, setAlbums, currentRound } = props;
-
+const RoundSelection = ({ setRoute, setRounds, setAlbums, currentRound }) => {
     useEffect(() => {
         const getAlbums = async () => {
             const albums = await prepareFiveRoundsData();

@@ -1,14 +1,14 @@
 import React from 'react';
 import './Progress.css';
 
-const Progress = (props) => {
+const Progress = ({ width, currentRound, rounds }) => {
     return (
         <div className="Progress--container">
             <span
                 className="Progress--percentage"
-                style={{ width: props.width + '%' }}
+                style={{ width: width + '%' }}
             >
-                {props.currentRound}/{props.rounds}
+                {currentRound}/{rounds}
             </span>
         </div>
     );

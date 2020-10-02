@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
 
-const CleanUp = (props) => {
-    const {
-        setRoute,
-        setRounds,
-        setAlbums,
-        setCurrentRound,
-        setResults,
-    } = props;
-
+const CleanUp = ({
+    setRoute,
+    setRounds,
+    setAlbums,
+    setCurrentRound,
+    setResults,
+}) => {
     useEffect(() => {
         setRoute('start');
         setRounds('5');
