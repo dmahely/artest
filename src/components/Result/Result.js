@@ -6,17 +6,15 @@ import { getNextRoundArtistOptions } from '../getNextRoundArtistOptions';
 import { setNextRoundArtistOptions } from '../setNextRoundArtistOptions';
 import { prepareFiveRoundsData } from '../prepareFiveRoundsData';
 
-const Result = (props) => {
-    const {
-        setRoute,
-        setCurrentRound,
-        rounds,
-        currentRound,
-        albums,
-        setAlbums,
-        results,
-    } = props;
-
+const Result = ({
+    setRoute,
+    setCurrentRound,
+    rounds,
+    currentRound,
+    albums,
+    setAlbums,
+    results,
+}) => {
     const roundResult = getCurrentRoundResult(albums, currentRound, results);
 
     useEffect(() => {

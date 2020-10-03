@@ -1,9 +1,7 @@
 import React from 'react';
 import './Artist.css';
 
-const Artist = (props) => {
-    const { setRoute, number, image, name, answer, setResults } = props;
-
+const Artist = ({ setRoute, number, image, name, answer, setResults }) => {
     // for changing the number to a play icon on mouse enter
     const handleMouseEnter = (e) => {
         if (e.target.children.length)
@@ -13,7 +11,7 @@ const Artist = (props) => {
     // for changing the play icon back to a number on mouse leave
     const handleMouseLeave = (e) => {
         if (e.target.children.length)
-            e.target.children.item(0).innerHTML = props.number;
+            e.target.children.item(0).innerHTML = number;
     };
 
     // for setting result in state and changing route

@@ -1,13 +1,10 @@
 import React from 'react';
 import './Option.css';
 
-const Option = (props) => {
+const Option = ({ color, text, onClick }) => {
     return (
-        <button
-            className={`Option--button ${props.color}`}
-            onClick={props.onClick}
-        >
-            <p>{props.text}</p>
+        <button className={`Option--button ${color}`} onClick={onClick}>
+            <p>{text}</p>
         </button>
     );
 };
