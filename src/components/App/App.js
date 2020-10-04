@@ -1,18 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import './App.css';
 import { Start } from '../Start';
 import { RoundSelection } from '../RoundSelection';
 import { Round } from '../Round';
 import { Result } from '../Result';
 import { FinalResult } from '../FinalResult';
-import { CleanUp } from '../CleanUp/CleanUp';
 import { fetchAccessToken } from '../../api/fetchAccessToken';
 import { isAccessTokenValid } from '../../utils/isAccessTokenValid';
 import { saveAccessToken } from '../../utils/saveAccessToken';
+import { ACTIONS } from '../hooks/actions';
 
 const App = () => {
     // todo: refactor to look nicer, maybe in a useReducer
-    const [route, setRoute] = useState('start');
+
+    const reducer = (state, action) => {
+        switch (action.type) {
+            case ACTIONS.SET_ROUTE:
+                if (action.payload === 'reset') return { ...initialState };
+                else {
+                    state.route = action.payload;
+                    return { ...state };
+                }
+            default:
+                throw new Error(`Unkown ${action.type} action`);
+        }
+    };
+
+    const initialState = {
+        route: 'start',
+        roundNum: 5,
+        rounds: [],
+        currentRound: 1,
+        results: [],
+    };
+
+    const [state, dispatch] = useReducer(reducer, initialState);
     const [rounds, setRounds] = useState(5);
     const [albums, setAlbums] = useState([]);
     const [currentRound, setCurrentRound] = useState(1);
@@ -33,18 +55,18 @@ const App = () => {
 
     return (
         <div className="App--container">
-            {route === 'start' && <Start setRoute={setRoute} />}
-            {route === 'roundSelection' && (
+            {state.route === 'start' && <Start dispatch={dispatch} />}
+            {state.route === 'roundSelection' && (
                 <RoundSelection
-                    setRoute={setRoute}
+                    dispatch={dispatch}
                     setRounds={setRounds}
                     setAlbums={setAlbums}
                     currentRound={currentRound}
                 />
             )}
-            {route === 'play' && (
+            {state.route === 'play' && (
                 <Round
-                    setRoute={setRoute}
+                    dispatch={dispatch}
                     albums={albums}
                     rounds={rounds}
                     setCurrentRound={setCurrentRound}
@@ -52,9 +74,9 @@ const App = () => {
                     setResults={setResults}
                 />
             )}
-            {route === 'result' && (
+            {state.route === 'result' && (
                 <Result
-                    setRoute={setRoute}
+                    dispatch={dispatch}
                     setCurrentRound={setCurrentRound}
                     currentRound={currentRound}
                     rounds={rounds}
@@ -63,20 +85,11 @@ const App = () => {
                     results={results}
                 />
             )}
-            {route === 'end' && (
+            {state.route === 'end' && (
                 <FinalResult
-                    setRoute={setRoute}
+                    dispatch={dispatch}
                     results={results}
                     albums={albums}
-                />
-            )}
-            {route === 'cleanup' && (
-                <CleanUp
-                    setRoute={setRoute}
-                    setRounds={setRounds}
-                    setAlbums={setAlbums}
-                    setCurrentRound={setCurrentRound}
-                    setResults={setResults}
                 />
             )}
         </div>
