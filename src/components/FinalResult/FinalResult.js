@@ -1,13 +1,13 @@
 import React from 'react';
 import './FinalResult.css';
 import scoreBackground from '../../assets/images/score-background.svg';
-import { Button } from '../Button/Button';
-import { getFinalScore } from '../getFinalScore';
-import { getAlbumResults } from '../getAlbumResults';
-import { ShareButton } from '../ShareButton/ShareButton';
+import { Button } from '../Button';
+import { getFinalScore } from '../../utils/getFinalScore';
+import { getAlbumResults } from '../../utils/getAlbumResults';
+import { ShareButton } from '../ShareButton';
 import twitterLogo from '../../assets/images/twitter-logo.svg';
 import facebookLogo from '../../assets/images/facebook-logo.svg';
-import { getResultDescription } from '../getResultDescription';
+import { getResultDescription } from '../../utils/getResultDescription';
 
 const twitterBaseURL = 'https://twitter.com/intent/tweet';
 const facebookBaseURL =

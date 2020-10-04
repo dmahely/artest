@@ -1,4 +1,4 @@
-import { artists } from '../components/artists';
+import { artists } from './artists';
 
 const extractThreeRelatedArtists = (data) => {
     const relatedArtists = data.artists.slice(0, 3).map((artist) => {

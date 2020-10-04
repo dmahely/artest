@@ -1,5 +1,5 @@
 import { getRoundArtistId } from './getRoundArtistId';
-import { fetchRelatedArtists } from './fetchRelatedArtists';
+import { fetchRelatedArtists } from '../api/fetchRelatedArtists';
 import { extractThreeRelatedArtists } from './extractThreeRelatedArtists';
 
 const getNextRoundArtistOptions = async (albumsObj, nextRound) => {

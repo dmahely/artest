@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { Start } from '../Start/Start';
-import { RoundSelection } from '../RoundSelection/RoundSelection';
-import { Round } from '../Round/Round';
-import { Result } from '../Result/Result';
-import { FinalResult } from '../FinalResult/FinalResult';
+import { Start } from '../Start';
+import { RoundSelection } from '../RoundSelection';
+import { Round } from '../Round';
+import { Result } from '../Result';
+import { FinalResult } from '../FinalResult';
 import { CleanUp } from '../CleanUp/CleanUp';
-import { fetchAccessToken } from '../fetchAccessToken';
-import { isAccessTokenValid } from '../isAccessTokenValid';
-import { saveAccessToken } from '../saveAccessToken';
+import { fetchAccessToken } from '../../api/fetchAccessToken';
+import { isAccessTokenValid } from '../../utils/isAccessTokenValid';
+import { saveAccessToken } from '../../utils/saveAccessToken';
 
 const App = () => {
     // todo: refactor to look nicer, maybe in a useReducer

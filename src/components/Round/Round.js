@@ -1,8 +1,8 @@
 import React from 'react';
 import './Round.css';
-import { Progress } from '../Progress/Progress.js';
-import { Artist } from '../Artist/Artist.js';
-import { Loading } from '../Loading/Loading.js';
+import { Progress } from '../Progress';
+import { Artist } from '../Artist';
+import { Loading } from '../Loading';
 
 const Round = ({ setRoute, rounds, currentRound, albums, setResults }) => {
     // returns loading component if any data we need is still not set in state

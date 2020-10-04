@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import './Result.css';
-import { Button } from '../Button/Button';
-import { getCurrentRoundResult } from '../getCurrentRoundResult';
-import { getNextRoundArtistOptions } from '../getNextRoundArtistOptions';
-import { setNextRoundArtistOptions } from '../setNextRoundArtistOptions';
-import { prepareFiveRoundsData } from '../prepareFiveRoundsData';
+import { Button } from '../Button';
+import { getCurrentRoundResult } from '../../utils/getCurrentRoundResult';
+import { getNextRoundArtistOptions } from '../../utils/getNextRoundArtistOptions';
+import { setNextRoundArtistOptions } from '../../utils/setNextRoundArtistOptions';
+import { prepareFiveRoundsData } from '../../utils/prepareFiveRoundsData';
 
 const Result = ({
     setRoute,

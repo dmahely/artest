@@ -1,11 +1,11 @@
-import { fetchFiveRandomAlbums } from './fetchFiveRandomAlbums';
-import { fetchArtistData } from './fetchArtistData';
-import { fetchRelatedArtists } from './fetchRelatedArtists';
+import { fetchFiveRandomAlbums } from '../api/fetchFiveRandomAlbums';
+import { fetchArtistData } from '../api/fetchArtistData';
+import { fetchRelatedArtists } from '../api/fetchRelatedArtists';
 import { getRoundArtistId } from './getRoundArtistId';
 import { extractAlbumData } from './extractAlbumData';
 import { extractArtistData } from './extractArtistData';
 import { extractThreeRelatedArtists } from './extractThreeRelatedArtists';
-import { setNextRoundArtistOptions } from './setNextRoundArtistOptions';
+import { setNextRoundArtistOptions } from '../utils/setNextRoundArtistOptions';
 
 // gets 5 random albums with related artists
 

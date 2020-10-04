@@ -1,7 +1,7 @@
 import React from 'react';
 import './Start.css';
 import logo from '../../assets/images/logo.png';
-import { Button } from '../Button/Button';
+import { Button } from '../Button';
 
 const Start = ({ setRoute }) => {
     return (
