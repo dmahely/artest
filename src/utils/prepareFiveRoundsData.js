@@ -5,7 +5,7 @@ import { getRoundArtistId } from './getRoundArtistId';
 import { extractAlbumData } from './extractAlbumData';
 import { extractArtistData } from './extractArtistData';
 import { extractThreeRelatedArtists } from './extractThreeRelatedArtists';
-import { setNextRoundArtistOptions } from './setNextRoundArtistOptions';
+import { setNextRoundArtistOptions } from '../utils/setNextRoundArtistOptions';
 
 // gets 5 random albums with related artists
 

@@ -1,4 +1,4 @@
-import { wordBank } from '../components/words';
+import { wordBank } from '../utils/words';
 
 const baseURL = process.env.REACT_APP_SPOTIFY_BASE_URL;
 

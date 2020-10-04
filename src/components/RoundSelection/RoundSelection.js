@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './RoundSelection.css';
 import { Option } from '../Option/Option';
-import { prepareFiveRoundsData } from '../prepareFiveRoundsData';
+import { prepareFiveRoundsData } from '../../utils/prepareFiveRoundsData';
 
 const RoundSelection = (props) => {
     const { setRoute, setRounds, setAlbums, currentRound } = props;

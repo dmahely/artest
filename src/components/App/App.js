@@ -7,8 +7,8 @@ import { Result } from '../Result/Result';
 import { FinalResult } from '../FinalResult/FinalResult';
 import { CleanUp } from '../CleanUp/CleanUp';
 import { fetchAccessToken } from '../../api/fetchAccessToken';
-import { isAccessTokenValid } from '../isAccessTokenValid';
-import { saveAccessToken } from '../saveAccessToken';
+import { isAccessTokenValid } from '../../utils/isAccessTokenValid';
+import { saveAccessToken } from '../../utils/saveAccessToken';
 
 const App = () => {
     // todo: refactor to look nicer, maybe in a useReducer

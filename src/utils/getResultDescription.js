@@ -1,4 +1,4 @@
-import { resultText } from './resultText';
+import { resultText } from '../utils/resultText';
 
 const getResultDescription = (score, rounds) => {
     let ranking = '';
