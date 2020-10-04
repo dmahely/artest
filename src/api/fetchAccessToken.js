@@ -2,6 +2,8 @@ const apiTokenURL = process.env.REACT_APP_SPOTIFY_ACCESS_TOKEN_URL,
     client_id = process.env.REACT_APP_CLIENT_ID,
     client_secret = process.env.REACT_APP_CLIENT_SECRET;
 
+console.log(process.env);
+
 const fetchAccessToken = async () => {
     // encodes client id and secret to base64
     const authParam = btoa(`${client_id}:${client_secret}`);

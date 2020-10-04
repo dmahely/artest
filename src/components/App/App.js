@@ -6,7 +6,7 @@ import { Round } from '../Round/Round';
 import { Result } from '../Result/Result';
 import { FinalResult } from '../FinalResult/FinalResult';
 import { CleanUp } from '../CleanUp/CleanUp';
-import { fetchAccessToken } from '../fetchAccessToken';
+import { fetchAccessToken } from '../../api/fetchAccessToken';
 import { isAccessTokenValid } from '../isAccessTokenValid';
 import { saveAccessToken } from '../saveAccessToken';
 
