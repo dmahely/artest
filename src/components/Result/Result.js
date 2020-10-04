@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Result.css';
-import { Button } from '../Button/Button';
+import { Button } from '../Button';
 import { getCurrentRoundResult } from '../../utils/getCurrentRoundResult';
 import { getNextRoundArtistOptions } from '../../utils/getNextRoundArtistOptions';
 import { setNextRoundArtistOptions } from '../../utils/setNextRoundArtistOptions';

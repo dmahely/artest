@@ -1,8 +1,8 @@
 import React from 'react';
 import './Round.css';
-import { Progress } from '../Progress/Progress.js';
-import { Artist } from '../Artist/Artist.js';
-import { Loading } from '../Loading/Loading.js';
+import { Progress } from '../Progress';
+import { Artist } from '../Artist';
+import { Loading } from '../Loading';
 
 const Round = (props) => {
     const { setRoute, rounds, currentRound, albums, setResults } = props;
