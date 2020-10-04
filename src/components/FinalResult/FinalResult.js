@@ -8,12 +8,13 @@ import { ShareButton } from '../ShareButton';
 import twitterLogo from '../../assets/images/twitter-logo.svg';
 import facebookLogo from '../../assets/images/facebook-logo.svg';
 import { getResultDescription } from '../../utils/getResultDescription';
+import { ACTIONS } from '../hooks/actions';
 
 const twitterBaseURL = 'https://twitter.com/intent/tweet';
 const facebookBaseURL =
     'https://www.facebook.com/sharer/sharer.php?u=example.org';
 
-const FinalResult = ({ setRoute, results, albums }) => {
+const FinalResult = ({ dispatch, results, albums }) => {
     const [score, rounds] = getFinalScore(results);
     const albumResults = getAlbumResults(albums, results);
     const description = getResultDescription(score, rounds);
@@ -60,7 +61,12 @@ const FinalResult = ({ setRoute, results, albums }) => {
                     {rounds}
                 </p>
             </div>
-            <Button text="Play again" onClick={() => setRoute('cleanup')} />
+            <Button
+                text="Play again"
+                onClick={() =>
+                    dispatch({ type: ACTIONS.SET_ROUTE, payload: 'start' })
+                }
+            />
             <div className="FinalResult--social-container">
                 <ShareButton icon={twitterLogo} onClick={handleTweetShare} />
                 <ShareButton

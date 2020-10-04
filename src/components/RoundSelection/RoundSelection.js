@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import './RoundSelection.css';
 import { Option } from '../Option';
 import { prepareFiveRoundsData } from '../../utils/prepareFiveRoundsData';
+import { ACTIONS } from '../hooks/actions';
 
-const RoundSelection = ({ setRoute, setRounds, setAlbums, currentRound }) => {
+const RoundSelection = ({ dispatch, setRounds, setAlbums, currentRound }) => {
     useEffect(() => {
         const getAlbums = async () => {
             const albums = await prepareFiveRoundsData();
@@ -23,7 +24,7 @@ const RoundSelection = ({ setRoute, setRounds, setAlbums, currentRound }) => {
                     text="5"
                     color="yellow"
                     onClick={() => {
-                        setRoute('play');
+                        dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
                         setRounds(5);
                     }}
                 />
@@ -31,7 +32,7 @@ const RoundSelection = ({ setRoute, setRounds, setAlbums, currentRound }) => {
                     text="10"
                     color="pink"
                     onClick={() => {
-                        setRoute('play');
+                        dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
                         setRounds(10);
                     }}
                 />
@@ -39,7 +40,7 @@ const RoundSelection = ({ setRoute, setRounds, setAlbums, currentRound }) => {
                     text="15"
                     color="green"
                     onClick={() => {
-                        setRoute('play');
+                        dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
                         setRounds(15);
                     }}
                 />
@@ -47,7 +48,7 @@ const RoundSelection = ({ setRoute, setRounds, setAlbums, currentRound }) => {
                     text="20"
                     color="navy"
                     onClick={() => {
-                        setRoute('play');
+                        dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
                         setRounds(20);
                     }}
                 />

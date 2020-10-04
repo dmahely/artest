@@ -5,9 +5,10 @@ import { getCurrentRoundResult } from '../../utils/getCurrentRoundResult';
 import { getNextRoundArtistOptions } from '../../utils/getNextRoundArtistOptions';
 import { setNextRoundArtistOptions } from '../../utils/setNextRoundArtistOptions';
 import { prepareFiveRoundsData } from '../../utils/prepareFiveRoundsData';
+import { ACTIONS } from '../hooks/actions';
 
 const Result = ({
-    setRoute,
+    dispatch,
     setCurrentRound,
     rounds,
     currentRound,
@@ -65,9 +66,9 @@ const Result = ({
     const handleClick = (e) => {
         if (currentRound < rounds) {
             setCurrentRound((currentRound) => currentRound + 1);
-            setRoute('play');
+            dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
         } else {
-            setRoute('end');
+            dispatch({ type: ACTIONS.SET_ROUTE, payload: 'end' });
         }
     };
 
