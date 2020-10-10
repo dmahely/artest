@@ -21,6 +21,9 @@ const App = () => {
                     state.route = action.payload;
                     return { ...state };
                 }
+            case ACTIONS.SET_ROUNDS_NUM:
+                state.roundsNum = action.payload;
+                return { ...state };
             default:
                 throw new Error(`Unkown ${action.type} action`);
         }
@@ -28,14 +31,13 @@ const App = () => {
 
     const initialState = {
         route: 'start',
-        roundNum: 5,
+        roundsNum: 5,
         rounds: [],
         currentRound: 1,
         results: [],
     };
 
     const [state, dispatch] = useReducer(reducer, initialState);
-    const [rounds, setRounds] = useState(5);
     const [albums, setAlbums] = useState([]);
     const [currentRound, setCurrentRound] = useState(1);
     const [results, setResults] = useState([]);
@@ -59,7 +61,6 @@ const App = () => {
             {state.route === 'roundSelection' && (
                 <RoundSelection
                     dispatch={dispatch}
-                    setRounds={setRounds}
                     setAlbums={setAlbums}
                     currentRound={currentRound}
                 />
@@ -68,7 +69,7 @@ const App = () => {
                 <Round
                     dispatch={dispatch}
                     albums={albums}
-                    rounds={rounds}
+                    rounds={state.roundsNum}
                     setCurrentRound={setCurrentRound}
                     currentRound={currentRound}
                     setResults={setResults}
@@ -79,7 +80,7 @@ const App = () => {
                     dispatch={dispatch}
                     setCurrentRound={setCurrentRound}
                     currentRound={currentRound}
-                    rounds={rounds}
+                    rounds={state.roundsNum}
                     albums={albums}
                     setAlbums={setAlbums}
                     results={results}

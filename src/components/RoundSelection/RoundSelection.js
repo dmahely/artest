@@ -4,7 +4,7 @@ import { Option } from '../Option';
 import { prepareFiveRoundsData } from '../../utils/prepareFiveRoundsData';
 import { ACTIONS } from '../hooks/actions';
 
-const RoundSelection = ({ dispatch, setRounds, setAlbums, currentRound }) => {
+const RoundSelection = ({ dispatch, setAlbums, currentRound }) => {
     useEffect(() => {
         const getAlbums = async () => {
             const albums = await prepareFiveRoundsData();
@@ -25,7 +25,10 @@ const RoundSelection = ({ dispatch, setRounds, setAlbums, currentRound }) => {
                     color="yellow"
                     onClick={() => {
                         dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
-                        setRounds(5);
+                        dispatch({
+                            type: ACTIONS.SET_ROUNDS_NUM,
+                            payload: 5,
+                        });
                     }}
                 />
                 <Option
@@ -33,7 +36,10 @@ const RoundSelection = ({ dispatch, setRounds, setAlbums, currentRound }) => {
                     color="pink"
                     onClick={() => {
                         dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
-                        setRounds(10);
+                        dispatch({
+                            type: ACTIONS.SET_ROUNDS_NUM,
+                            payload: 10,
+                        });
                     }}
                 />
                 <Option
@@ -41,7 +47,10 @@ const RoundSelection = ({ dispatch, setRounds, setAlbums, currentRound }) => {
                     color="green"
                     onClick={() => {
                         dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
-                        setRounds(15);
+                        dispatch({
+                            type: ACTIONS.SET_ROUNDS_NUM,
+                            payload: 15,
+                        });
                     }}
                 />
                 <Option
@@ -49,7 +58,10 @@ const RoundSelection = ({ dispatch, setRounds, setAlbums, currentRound }) => {
                     color="navy"
                     onClick={() => {
                         dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
-                        setRounds(20);
+                        dispatch({
+                            type: ACTIONS.SET_ROUNDS_NUM,
+                            payload: 20,
+                        });
                     }}
                 />
             </div>
