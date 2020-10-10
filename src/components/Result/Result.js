@@ -9,7 +9,6 @@ import { ACTIONS } from '../hooks/actions';
 
 const Result = ({
     dispatch,
-    setCurrentRound,
     rounds,
     currentRound,
     albums,
@@ -65,7 +64,10 @@ const Result = ({
     // for changing the route and updating current round
     const handleClick = (e) => {
         if (currentRound < rounds) {
-            setCurrentRound((currentRound) => currentRound + 1);
+            dispatch({
+                type: ACTIONS.SET_CURRENT_ROUND,
+                payload: currentRound + 1,
+            });
             dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
         } else {
             dispatch({ type: ACTIONS.SET_ROUTE, payload: 'end' });
