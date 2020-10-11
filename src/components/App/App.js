@@ -69,7 +69,7 @@ const App = () => {
                     currentRound={currentRound}
                 />
             )}
-            {route === 'play' && (
+            {state.route === 'play' && (
                 <Round
                     dispatch={dispatch}
                     results={results}
@@ -78,7 +78,7 @@ const App = () => {
                     currentRound={currentRound}
                 />
             )}
-            {route === 'result' && (
+            {state.route === 'result' && (
                 <Result
                     dispatch={dispatch}
                     currentRound={currentRound}
@@ -87,7 +87,7 @@ const App = () => {
                     results={results}
                 />
             )}
-            {route === 'end' && (
+            {state.route === 'end' && (
                 <FinalResult
                     dispatch={dispatch}
                     results={results}
