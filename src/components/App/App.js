@@ -27,6 +27,9 @@ const App = () => {
             case ACTIONS.SET_CURRENT_ROUND:
                 state.currentRound = action.payload;
                 return { ...state };
+            case ACTIONS.SET_RESULTS:
+                state.results = action.payload;
+                return { ...state };
             default:
                 throw new Error(`Unkown ${action.type} action`);
         }
@@ -42,7 +45,6 @@ const App = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
     const [albums, setAlbums] = useState([]);
-    const [results, setResults] = useState([]);
 
     useEffect(() => {
         // handle getting and refreshing access token
@@ -70,10 +72,10 @@ const App = () => {
             {state.route === 'play' && (
                 <Round
                     dispatch={dispatch}
+                    results={state.results}
                     albums={albums}
                     rounds={state.roundsNum}
                     currentRound={state.currentRound}
-                    setResults={setResults}
                 />
             )}
             {state.route === 'result' && (
@@ -83,13 +85,13 @@ const App = () => {
                     rounds={state.roundsNum}
                     albums={albums}
                     setAlbums={setAlbums}
-                    results={results}
+                    results={state.results}
                 />
             )}
             {state.route === 'end' && (
                 <FinalResult
                     dispatch={dispatch}
-                    results={results}
+                    results={state.results}
                     albums={albums}
                 />
             )}

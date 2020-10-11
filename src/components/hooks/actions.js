@@ -5,7 +5,7 @@ const ACTIONS = {
     SET_ROUNDS_NUM: 'setRoundsNum',
     SET_ROUNDS: 'setRounds',
     SET_ROUTE: 'setRoute',
-    SET_RESULT: 'setResult',
+    SET_RESULTS: 'setResults',
 };
 
 export { ACTIONS };

@@ -2,7 +2,7 @@ import React from 'react';
 import { ACTIONS } from '../hooks/actions';
 import './Artist.css';
 
-const Artist = ({ dispatch, number, image, name, answer, setResults }) => {
+const Artist = ({ dispatch, number, image, name, answer, results }) => {
     // for changing the number to a play icon on mouse enter
     const handleMouseEnter = (e) => {
         if (e.target.children.length)
@@ -22,7 +22,7 @@ const Artist = ({ dispatch, number, image, name, answer, setResults }) => {
             result = true;
         }
 
-        setResults((results) => [...results, result]);
+        dispatch({ type: ACTIONS.SET_RESULTS, payload: [...results, result] });
         dispatch({ type: ACTIONS.SET_ROUTE, payload: 'result' });
     };
 

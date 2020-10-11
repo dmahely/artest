@@ -4,7 +4,7 @@ import { Progress } from '../Progress';
 import { Artist } from '../Artist';
 import { Loading } from '../Loading';
 
-const Round = ({ dispatch, rounds, currentRound, albums, setResults }) => {
+const Round = ({ dispatch, rounds, currentRound, albums, results }) => {
     // returns loading component if any data we need is still not set in state
     // usually whenever data in state is prepped or when related artists fetch is late
     if (
@@ -43,7 +43,7 @@ const Round = ({ dispatch, rounds, currentRound, albums, setResults }) => {
                         image={artist.image}
                         dispatch={dispatch}
                         answer={artist.isAnswer}
-                        setResults={setResults}
+                        results={results}
                     />
                 ))}
             </div>
