@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import './App.css';
 import { Start } from '../Start';
 import { RoundSelection } from '../RoundSelection';
@@ -11,8 +11,6 @@ import { saveAccessToken } from '../../utils/saveAccessToken';
 import { ACTIONS } from '../hooks/actions';
 
 const App = () => {
-    // todo: refactor to look nicer, maybe in a useReducer
-
     const reducer = (state, action) => {
         switch (action.type) {
             case ACTIONS.SET_ROUTE:
@@ -30,6 +28,9 @@ const App = () => {
             case ACTIONS.SET_RESULTS:
                 state.results = action.payload;
                 return { ...state };
+            case ACTIONS.SET_ROUNDS:
+                state.rounds = action.payload;
+                return { ...state };
             default:
                 throw new Error(`Unkown ${action.type} action`);
         }
@@ -44,7 +45,6 @@ const App = () => {
     };
 
     const [state, dispatch] = useReducer(reducer, initialState);
-    const [albums, setAlbums] = useState([]);
 
     useEffect(() => {
         // handle getting and refreshing access token
@@ -65,7 +65,6 @@ const App = () => {
             {state.route === 'roundSelection' && (
                 <RoundSelection
                     dispatch={dispatch}
-                    setAlbums={setAlbums}
                     currentRound={state.currentRound}
                 />
             )}
@@ -73,8 +72,8 @@ const App = () => {
                 <Round
                     dispatch={dispatch}
                     results={state.results}
-                    albums={albums}
-                    rounds={state.roundsNum}
+                    rounds={state.rounds}
+                    roundsNum={state.roundsNum}
                     currentRound={state.currentRound}
                 />
             )}
@@ -82,9 +81,8 @@ const App = () => {
                 <Result
                     dispatch={dispatch}
                     currentRound={state.currentRound}
-                    rounds={state.roundsNum}
-                    albums={albums}
-                    setAlbums={setAlbums}
+                    roundsNum={state.roundsNum}
+                    rounds={state.rounds}
                     results={state.results}
                 />
             )}
@@ -92,7 +90,7 @@ const App = () => {
                 <FinalResult
                     dispatch={dispatch}
                     results={state.results}
-                    albums={albums}
+                    rounds={state.rounds}
                 />
             )}
         </div>

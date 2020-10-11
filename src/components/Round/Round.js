@@ -4,29 +4,29 @@ import { Progress } from '../Progress';
 import { Artist } from '../Artist';
 import { Loading } from '../Loading';
 
-const Round = ({ dispatch, rounds, currentRound, albums, results }) => {
+const Round = ({ dispatch, roundsNum, currentRound, rounds, results }) => {
     // returns loading component if any data we need is still not set in state
     // usually whenever data in state is prepped or when related artists fetch is late
     if (
-        albums.length === 0 ||
-        !albums[currentRound - 1] ||
-        albums[currentRound - 1].length < 4
+        rounds.length === 0 ||
+        !rounds[currentRound - 1] ||
+        rounds[currentRound - 1].length < 4
     )
         return <Loading />;
 
     // calculate current progress
-    const width = (currentRound / rounds) * 100;
+    const width = (currentRound / roundsNum) * 100;
 
-    const albumCoverArt = albums[currentRound - 1].album.coverArt;
-    const albumName = albums[currentRound - 1].album.name;
-    const artists = albums[currentRound - 1].artists;
+    const albumCoverArt = rounds[currentRound - 1].album.coverArt;
+    const albumName = rounds[currentRound - 1].album.name;
+    const artists = rounds[currentRound - 1].artists;
 
     return (
         <div className="Round--container">
             <Progress
                 width={width}
                 currentRound={currentRound}
-                rounds={rounds}
+                roundsNum={roundsNum}
             />
             <img
                 loading="lazy"

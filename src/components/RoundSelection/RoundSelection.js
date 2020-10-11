@@ -4,15 +4,18 @@ import { Option } from '../Option';
 import { prepareFiveRoundsData } from '../../utils/prepareFiveRoundsData';
 import { ACTIONS } from '../hooks/actions';
 
-const RoundSelection = ({ dispatch, setAlbums, currentRound }) => {
+const RoundSelection = ({ dispatch }) => {
     useEffect(() => {
         const getAlbums = async () => {
             const albums = await prepareFiveRoundsData();
-            setAlbums(albums);
+            dispatch({
+                type: ACTIONS.SET_ROUNDS,
+                payload: albums,
+            });
         };
 
         getAlbums();
-    }, [setAlbums, currentRound]);
+    }, [dispatch]);
 
     return (
         <div className="RoundSelection--container">

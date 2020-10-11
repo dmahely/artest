@@ -1,6 +1,5 @@
 // all actions that can possibly mutate the state
 const ACTIONS = {
-    SET_ALBUMS: 'setAlbums',
     SET_CURRENT_ROUND: 'setCurrentRound',
     SET_ROUNDS_NUM: 'setRoundsNum',
     SET_ROUNDS: 'setRounds',
