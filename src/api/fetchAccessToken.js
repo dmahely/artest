@@ -2,8 +2,6 @@ const apiTokenURL = process.env.REACT_APP_SPOTIFY_ACCESS_TOKEN_URL,
     client_id = process.env.REACT_APP_CLIENT_ID,
     client_secret = process.env.REACT_APP_CLIENT_SECRET;
 
-console.log(process.env);
-
 const fetchAccessToken = async () => {
     // encodes client id and secret to base64
     const authParam = btoa(`${client_id}:${client_secret}`);
@@ -19,7 +17,13 @@ const fetchAccessToken = async () => {
     });
 
     // jsonify the api response and return the access token
-    const tokenVal = await tokenResponse.json();
+    let tokenVal;
+    try {
+        tokenVal = await tokenResponse.json();
+    } catch (err) {
+        console.log(err);
+        throw new Error(err);
+    }
     const token = tokenVal.access_token;
 
     // calculate expiry date and time (current time + one hour)

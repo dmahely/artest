@@ -15,7 +15,13 @@ const fetchRelatedArtists = async (artistId) => {
         },
     });
 
-    const relatedArtistsData = await relatedArtistsResponse.json();
+    let relatedArtistsData;
+    try {
+        relatedArtistsData = await relatedArtistsResponse.json();
+    } catch (err) {
+        console.log(err);
+        throw new Error(err);
+    }
 
     return relatedArtistsData;
 };
