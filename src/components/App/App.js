@@ -45,6 +45,7 @@ const App = () => {
     };
 
     const [state, dispatch] = useReducer(reducer, initialState);
+    const { currentRound, results, rounds, roundsNum, route } = state;
 
     useEffect(() => {
         // handle getting and refreshing access token
@@ -61,36 +62,36 @@ const App = () => {
 
     return (
         <div className="App--container">
-            {state.route === 'start' && <Start dispatch={dispatch} />}
-            {state.route === 'roundSelection' && (
+            {route === 'start' && <Start dispatch={dispatch} />}
+            {route === 'roundSelection' && (
                 <RoundSelection
                     dispatch={dispatch}
-                    currentRound={state.currentRound}
+                    currentRound={currentRound}
                 />
             )}
-            {state.route === 'play' && (
+            {route === 'play' && (
                 <Round
                     dispatch={dispatch}
-                    results={state.results}
-                    rounds={state.rounds}
-                    roundsNum={state.roundsNum}
-                    currentRound={state.currentRound}
+                    results={results}
+                    rounds={rounds}
+                    roundsNum={roundsNum}
+                    currentRound={currentRound}
                 />
             )}
-            {state.route === 'result' && (
+            {route === 'result' && (
                 <Result
                     dispatch={dispatch}
-                    currentRound={state.currentRound}
-                    roundsNum={state.roundsNum}
-                    rounds={state.rounds}
-                    results={state.results}
+                    currentRound={currentRound}
+                    roundsNum={roundsNum}
+                    rounds={rounds}
+                    results={results}
                 />
             )}
-            {state.route === 'end' && (
+            {route === 'end' && (
                 <FinalResult
                     dispatch={dispatch}
-                    results={state.results}
-                    rounds={state.rounds}
+                    results={results}
+                    rounds={rounds}
                 />
             )}
         </div>
