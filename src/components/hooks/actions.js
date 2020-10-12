@@ -5,6 +5,7 @@ const ACTIONS = {
     SET_ROUNDS: 'setRounds',
     SET_ROUTE: 'setRoute',
     SET_RESULTS: 'setResults',
+    RESET_STATE: 'resetState',
 };
 
 export { ACTIONS };

@@ -13,12 +13,11 @@ import { ACTIONS } from '../hooks/actions';
 const App = () => {
     const reducer = (state, action) => {
         switch (action.type) {
+            case ACTIONS.RESET_STATE:
+                return { ...initialState };
             case ACTIONS.SET_ROUTE:
-                if (action.payload === 'reset') return { ...initialState };
-                else {
-                    state.route = action.payload;
-                    return { ...state };
-                }
+                state.route = action.payload;
+                return { ...state };
             case ACTIONS.SET_ROUNDS_NUM:
                 state.roundsNum = action.payload;
                 return { ...state };

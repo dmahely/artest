@@ -63,9 +63,7 @@ const FinalResult = ({ dispatch, results, rounds }) => {
             </div>
             <Button
                 text="Play again"
-                onClick={() =>
-                    dispatch({ type: ACTIONS.SET_ROUTE, payload: 'reset' })
-                }
+                onClick={() => dispatch({ type: ACTIONS.RESET_STATE })}
             />
             <div className="FinalResult--social-container">
                 <ShareButton icon={twitterLogo} onClick={handleTweetShare} />
