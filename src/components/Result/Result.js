@@ -5,20 +5,13 @@ import { getCurrentRoundResult } from '../../utils/getCurrentRoundResult';
 import { getNextRoundArtistOptions } from '../../utils/getNextRoundArtistOptions';
 import { setNextRoundArtistOptions } from '../../utils/setNextRoundArtistOptions';
 import { prepareFiveRoundsData } from '../../utils/prepareFiveRoundsData';
+import { ACTIONS } from '../hooks/actions';
 
-const Result = ({
-    setRoute,
-    setCurrentRound,
-    rounds,
-    currentRound,
-    albums,
-    setAlbums,
-    results,
-}) => {
-    const roundResult = getCurrentRoundResult(albums, currentRound, results);
+const Result = ({ dispatch, roundsNum, currentRound, rounds, results }) => {
+    const roundResult = getCurrentRoundResult(rounds, currentRound, results);
 
     useEffect(() => {
-        const albumsObj = albums;
+        const albumsObj = rounds;
         const nextRound = currentRound + 1;
 
         const getNextRoundOptions = async () => {
@@ -32,22 +25,25 @@ const Result = ({
                 artists,
                 nextRound
             );
-
-            setAlbums(updatedAlbums);
+            dispatch({ type: ACTIONS.SET_ROUNDS, payload: updatedAlbums });
         };
 
         const getFiveMoreRounds = async () => {
             const newAlbums = await prepareFiveRoundsData();
-            setAlbums((albums) => [...albums, ...newAlbums]);
+            dispatch({
+                type: ACTIONS.SET_ROUNDS,
+                payload: [...rounds, ...newAlbums],
+            });
         };
 
         // if we have five more rounds
-        if (currentRound % 5 === 0 && rounds >= nextRound) {
+        if (currentRound % 5 === 0 && roundsNum >= nextRound) {
             getFiveMoreRounds();
         }
         // if this is not the last round
-        else if (rounds >= nextRound) getNextRoundOptions();
-    });
+        else if (roundsNum >= nextRound) getNextRoundOptions();
+    }, [dispatch, roundsNum, currentRound, rounds]);
+
     const {
         albumCoverArt,
         albumName,
@@ -63,11 +59,14 @@ const Result = ({
 
     // for changing the route and updating current round
     const handleClick = (e) => {
-        if (currentRound < rounds) {
-            setCurrentRound((currentRound) => currentRound + 1);
-            setRoute('play');
+        if (currentRound < roundsNum) {
+            dispatch({
+                type: ACTIONS.SET_CURRENT_ROUND,
+                payload: currentRound + 1,
+            });
+            dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
         } else {
-            setRoute('end');
+            dispatch({ type: ACTIONS.SET_ROUTE, payload: 'end' });
         }
     };
 
