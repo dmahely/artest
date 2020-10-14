@@ -2,8 +2,9 @@ import React from 'react';
 import './Start.css';
 import logo from '../../assets/images/logo.png';
 import { Button } from '../Button';
+import { ACTIONS } from '../hooks/actions';
 
-const Start = ({ setRoute }) => {
+const Start = ({ dispatch }) => {
     return (
         <div className="Start--container">
             <div className="Start--top-shape"></div>
@@ -12,7 +13,15 @@ const Start = ({ setRoute }) => {
             <span className="Start--description">
                 Guess which artist the album belongs to
             </span>
-            <Button text="Start" onClick={() => setRoute('roundSelection')} />
+            <Button
+                text="Start"
+                onClick={() =>
+                    dispatch({
+                        type: ACTIONS.SET_ROUTE,
+                        payload: 'roundSelection',
+                    })
+                }
+            />
 
             <footer className="Start--footer">
                 <p className="Start--spotify-text">Powered by Spotify. </p>

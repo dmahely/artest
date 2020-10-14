@@ -2,16 +2,20 @@ import React, { useEffect } from 'react';
 import './RoundSelection.css';
 import { Option } from '../Option';
 import { prepareFiveRoundsData } from '../../utils/prepareFiveRoundsData';
+import { ACTIONS } from '../hooks/actions';
 
-const RoundSelection = ({ setRoute, setRounds, setAlbums, currentRound }) => {
+const RoundSelection = ({ dispatch }) => {
     useEffect(() => {
         const getAlbums = async () => {
             const albums = await prepareFiveRoundsData();
-            setAlbums(albums);
+            dispatch({
+                type: ACTIONS.SET_ROUNDS,
+                payload: albums,
+            });
         };
 
         getAlbums();
-    }, [setAlbums, currentRound]);
+    }, [dispatch]);
 
     return (
         <div className="RoundSelection--container">
@@ -23,32 +27,44 @@ const RoundSelection = ({ setRoute, setRounds, setAlbums, currentRound }) => {
                     text="5"
                     color="yellow"
                     onClick={() => {
-                        setRoute('play');
-                        setRounds(5);
+                        dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
+                        dispatch({
+                            type: ACTIONS.SET_ROUNDS_NUM,
+                            payload: 5,
+                        });
                     }}
                 />
                 <Option
                     text="10"
                     color="pink"
                     onClick={() => {
-                        setRoute('play');
-                        setRounds(10);
+                        dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
+                        dispatch({
+                            type: ACTIONS.SET_ROUNDS_NUM,
+                            payload: 10,
+                        });
                     }}
                 />
                 <Option
                     text="15"
                     color="green"
                     onClick={() => {
-                        setRoute('play');
-                        setRounds(15);
+                        dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
+                        dispatch({
+                            type: ACTIONS.SET_ROUNDS_NUM,
+                            payload: 15,
+                        });
                     }}
                 />
                 <Option
                     text="20"
                     color="navy"
                     onClick={() => {
-                        setRoute('play');
-                        setRounds(20);
+                        dispatch({ type: ACTIONS.SET_ROUTE, payload: 'play' });
+                        dispatch({
+                            type: ACTIONS.SET_ROUNDS_NUM,
+                            payload: 20,
+                        });
                     }}
                 />
             </div>
