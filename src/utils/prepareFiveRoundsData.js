@@ -19,24 +19,24 @@ const prepareFiveRoundsData = async (currentRound = 1) => {
     const artistImages = extractArtistData(albumsWithArtistImages);
 
     // map each round's artists obj to an artist image
-    // const albumsWithImages = randomAlbums.map((album, index) => {
-    //     album.artists[currentRound - 1].image = artistImages[index];
-    //     return album;
-    // });
+    const albumsWithImages = randomAlbums.map((album, index) => {
+        album.artists[currentRound - 1].image = artistImages[index];
+        return album;
+    });
 
-    // const artistId = getRoundArtistId(randomAlbums, currentRound);
+    const artistId = getRoundArtistId(randomAlbums, currentRound);
 
-    // const relatedArtistsData = await fetchRelatedArtists(artistId);
+    const relatedArtistsData = await fetchRelatedArtists(artistId);
 
-    // const relatedArtists = extractThreeRelatedArtists(relatedArtistsData);
+    const relatedArtists = extractThreeRelatedArtists(relatedArtistsData);
 
-    // const updatedAlbums = setNextRoundArtistOptions(
-    //     albumsWithImages,
-    //     relatedArtists,
-    //     currentRound
-    // );
+    const updatedAlbums = setNextRoundArtistOptions(
+        albumsWithImages,
+        relatedArtists,
+        currentRound
+    );
 
-    // return updatedAlbums;
+    return updatedAlbums;
 };
 
 export { prepareFiveRoundsData };
