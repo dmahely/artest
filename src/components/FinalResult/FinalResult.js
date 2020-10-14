@@ -8,18 +8,19 @@ import { ShareButton } from '../ShareButton';
 import twitterLogo from '../../assets/images/twitter-logo.svg';
 import facebookLogo from '../../assets/images/facebook-logo.svg';
 import { getResultDescription } from '../../utils/getResultDescription';
+import { ACTIONS } from '../hooks/actions';
 
 const twitterBaseURL = 'https://twitter.com/intent/tweet';
 const facebookBaseURL =
     'https://www.facebook.com/sharer/sharer.php?u=example.org';
 
-const FinalResult = ({ setRoute, results, albums }) => {
-    const [score, rounds] = getFinalScore(results);
-    const albumResults = getAlbumResults(albums, results);
-    const description = getResultDescription(score, rounds);
+const FinalResult = ({ dispatch, results, rounds }) => {
+    const [score, roundsNum] = getFinalScore(results);
+    const albumResults = getAlbumResults(rounds, results);
+    const description = getResultDescription(score, roundsNum);
 
     const handleTweetShare = () => {
-        const tweet = `I got ${score}/${rounds} playing Artest! What about you? Check out the game on https://dmahely.github.io/artest/`;
+        const tweet = `I got ${score}/${roundsNum} playing Artest! What about you? Check out the game on https://dmahely.github.io/artest/`;
         window.open(`${twitterBaseURL}?text=${tweet}`);
     };
 
@@ -57,10 +58,13 @@ const FinalResult = ({ setRoute, results, albums }) => {
                         {' '}
                         out of{' '}
                     </span>
-                    {rounds}
+                    {roundsNum}
                 </p>
             </div>
-            <Button text="Play again" onClick={() => setRoute('cleanup')} />
+            <Button
+                text="Play again"
+                onClick={() => dispatch({ type: ACTIONS.RESET_STATE })}
+            />
             <div className="FinalResult--social-container">
                 <ShareButton icon={twitterLogo} onClick={handleTweetShare} />
                 <ShareButton

@@ -1,22 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import './App.css';
 import { Start } from '../Start';
 import { RoundSelection } from '../RoundSelection';
 import { Round } from '../Round';
 import { Result } from '../Result';
 import { FinalResult } from '../FinalResult';
-import { CleanUp } from '../CleanUp/CleanUp';
 import { fetchAccessToken } from '../../api/fetchAccessToken';
 import { isAccessTokenValid } from '../../utils/isAccessTokenValid';
 import { saveAccessToken } from '../../utils/saveAccessToken';
+import { ACTIONS } from '../hooks/actions';
 
 const App = () => {
-    // todo: refactor to look nicer, maybe in a useReducer
-    const [route, setRoute] = useState('start');
-    const [rounds, setRounds] = useState(5);
-    const [albums, setAlbums] = useState([]);
-    const [currentRound, setCurrentRound] = useState(1);
-    const [results, setResults] = useState([]);
+    const reducer = (state, action) => {
+        switch (action.type) {
+            case ACTIONS.RESET_STATE:
+                return { ...initialState };
+            case ACTIONS.SET_ROUTE:
+                state.route = action.payload;
+                return { ...state };
+            case ACTIONS.SET_ROUNDS_NUM:
+                state.roundsNum = action.payload;
+                return { ...state };
+            case ACTIONS.SET_CURRENT_ROUND:
+                state.currentRound = action.payload;
+                return { ...state };
+            case ACTIONS.SET_RESULTS:
+                state.results = action.payload;
+                return { ...state };
+            case ACTIONS.SET_ROUNDS:
+                state.rounds = action.payload;
+                return { ...state };
+            default:
+                throw new Error(`Unkown ${action.type} action`);
+        }
+    };
+
+    const initialState = {
+        route: 'start',
+        roundsNum: 5,
+        rounds: [],
+        currentRound: 1,
+        results: [],
+    };
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const { currentRound, results, rounds, roundsNum, route } = state;
 
     useEffect(() => {
         // handle getting and refreshing access token
@@ -33,50 +61,36 @@ const App = () => {
 
     return (
         <div className="App--container">
-            {route === 'start' && <Start setRoute={setRoute} />}
+            {route === 'start' && <Start dispatch={dispatch} />}
             {route === 'roundSelection' && (
                 <RoundSelection
-                    setRoute={setRoute}
-                    setRounds={setRounds}
-                    setAlbums={setAlbums}
+                    dispatch={dispatch}
                     currentRound={currentRound}
                 />
             )}
-            {route === 'play' && (
+            {state.route === 'play' && (
                 <Round
-                    setRoute={setRoute}
-                    albums={albums}
+                    dispatch={dispatch}
+                    results={results}
                     rounds={rounds}
-                    setCurrentRound={setCurrentRound}
+                    roundsNum={roundsNum}
                     currentRound={currentRound}
-                    setResults={setResults}
                 />
             )}
-            {route === 'result' && (
+            {state.route === 'result' && (
                 <Result
-                    setRoute={setRoute}
-                    setCurrentRound={setCurrentRound}
+                    dispatch={dispatch}
                     currentRound={currentRound}
+                    roundsNum={roundsNum}
                     rounds={rounds}
-                    albums={albums}
-                    setAlbums={setAlbums}
                     results={results}
                 />
             )}
-            {route === 'end' && (
+            {state.route === 'end' && (
                 <FinalResult
-                    setRoute={setRoute}
+                    dispatch={dispatch}
                     results={results}
-                    albums={albums}
-                />
-            )}
-            {route === 'cleanup' && (
-                <CleanUp
-                    setRoute={setRoute}
-                    setRounds={setRounds}
-                    setAlbums={setAlbums}
-                    setCurrentRound={setCurrentRound}
-                    setResults={setResults}
+                    rounds={rounds}
                 />
             )}
         </div>
