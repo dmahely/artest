@@ -24,7 +24,7 @@ const App = () => {
         const getToken = async () => {
             if (!(await isAccessTokenValid())) {
                 const token = await fetchAccessToken();
-                saveAccessToken(token);
+                if (token) saveAccessToken(token);
             }
         };
 

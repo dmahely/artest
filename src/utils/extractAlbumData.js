@@ -2,6 +2,8 @@
 // returns an array of albums and artists
 
 const extractAlbumData = (data) => {
+    if (!data) return;
+
     const items = data.albums.items;
 
     const albums = items.map((albumObj) => {

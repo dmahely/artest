@@ -8,6 +8,7 @@ const Round = ({ setRoute, rounds, currentRound, albums, setResults }) => {
     // returns loading component if any data we need is still not set in state
     // usually whenever data in state is prepped or when related artists fetch is late
     if (
+        !albums ||
         albums.length === 0 ||
         !albums[currentRound - 1] ||
         albums[currentRound - 1].length < 4
