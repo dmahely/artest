@@ -50,7 +50,7 @@ const App = () => {
         // handle getting and refreshing access token
         // then saving it in localStorage
         const getToken = async () => {
-            if (!(await isAccessTokenValid())) {
+            if (!isAccessTokenValid()) {
                 const token = await fetchAccessToken();
                 saveAccessToken(token);
             }
