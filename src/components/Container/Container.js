@@ -1,14 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import './Container.css';
 import { App } from '../App';
 import { ErrorBoundary } from '../ErrorBoundary';
 
 const Container = () => {
     return (
-        <Fragment>
+        <div className="Container--container">
             <ErrorBoundary>
                 <App />
             </ErrorBoundary>
-        </Fragment>
+        </div>
     );
 };
 

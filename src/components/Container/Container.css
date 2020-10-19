@@ -1,0 +1,6 @@
+.Container--container {
+    background-color: var(--gray);
+    height: 100vh;
+    text-align: center;
+    margin-top: -24px; /* hacky way to remove white space at top */
+}
