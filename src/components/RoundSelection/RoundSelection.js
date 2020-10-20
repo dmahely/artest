@@ -8,7 +8,10 @@ const RoundSelection = ({ dispatch }) => {
     useEffect(() => {
         const getAlbums = async () => {
             const albums = await prepareFiveRoundsData();
+            // ... below happens later
+
             dispatch({
+                // <-- warning comes from here
                 type: ACTIONS.SET_ROUNDS,
                 payload: albums,
             });
