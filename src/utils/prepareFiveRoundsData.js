@@ -2,7 +2,6 @@ import { fetchFiveRandomAlbums } from '../api/fetchFiveRandomAlbums';
 import { fetchArtistData } from '../api/fetchArtistData';
 import { fetchRelatedArtists } from '../api/fetchRelatedArtists';
 import { getRoundArtistId } from './getRoundArtistId';
-import { extractArtistData } from './extractArtistData';
 import { extractThreeRelatedArtists } from './extractThreeRelatedArtists';
 import { setNextRoundArtistOptions } from '../utils/setNextRoundArtistOptions';
 
@@ -11,9 +10,7 @@ import { setNextRoundArtistOptions } from '../utils/setNextRoundArtistOptions';
 const prepareFiveRoundsData = async (currentRound = 1) => {
     const randomAlbums = await fetchFiveRandomAlbums();
 
-    const albumsWithArtistImages = await fetchArtistData(randomAlbums);
-
-    const artistImages = extractArtistData(albumsWithArtistImages);
+    const artistImages = await fetchArtistData(randomAlbums);
 
     // map each round's artists obj to an artist image
     const albumsWithImages = randomAlbums.map((album, index) => {
