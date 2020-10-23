@@ -1,33 +1,30 @@
-import { fetchFiveRandomAlbums } from '../api/fetchFiveRandomAlbums';
-import { fetchArtistData } from '../api/fetchArtistData';
-import { fetchRelatedArtists } from '../api/fetchRelatedArtists';
-import { getRoundArtistId } from './getRoundArtistId';
 import { setNextRoundArtistOptions } from '../utils/setNextRoundArtistOptions';
 
 // gets 5 random albums with related artists
 
-const prepareFiveRoundsData = async (currentRound = 1) => {
-    const randomAlbums = await fetchFiveRandomAlbums();
+const prepareFiveRoundsData = async (roundNum = 1) => {
+    const accessToken = JSON.parse(localStorage.getItem('token'));
 
-    const artistImages = await fetchArtistData(randomAlbums);
-
-    // map each round's artists obj to an artist image
-    const albumsWithImages = randomAlbums.map((album, index) => {
-        album.artists[currentRound - 1].image = artistImages[index];
-        return album;
+    const roundsResponse = await fetch('/rounds', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ accessToken, roundNum }),
     });
+    const {
+        rounds,
+        relatedArtists,
+        currentRound,
+    } = await roundsResponse.json();
 
-    const artistId = getRoundArtistId(randomAlbums, currentRound);
-
-    const relatedArtists = await fetchRelatedArtists(artistId);
-
-    const updatedAlbums = setNextRoundArtistOptions(
-        albumsWithImages,
+    const newRounds = setNextRoundArtistOptions(
+        rounds,
         relatedArtists,
         currentRound
     );
 
-    return updatedAlbums;
+    return newRounds;
 };
 
 export { prepareFiveRoundsData };
