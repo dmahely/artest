@@ -34,5 +34,5 @@
     "devDependencies": {
         "prettier": "2.1.1"
     },
-    "proxy": "https://localhost:4000"
+    "proxy": "http://127.0.0.1:4000"
 }
