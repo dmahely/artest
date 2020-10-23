@@ -10,7 +10,7 @@ const Round = ({ dispatch, roundsNum, currentRound, rounds, results }) => {
     if (
         rounds.length === 0 ||
         !rounds[currentRound - 1] ||
-        rounds[currentRound - 1].length < 4
+        rounds[currentRound - 1].artists.length < 4
     )
         return <Loading />;
 
