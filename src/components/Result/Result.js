@@ -4,7 +4,7 @@ import { Button } from '../Button';
 import { getCurrentRoundResult } from '../../utils/getCurrentRoundResult';
 import { getNextRoundArtistOptions } from '../../utils/getNextRoundArtistOptions';
 import { setNextRoundArtistOptions } from '../../utils/setNextRoundArtistOptions';
-import { prepareFiveRoundsData } from '../../utils/prepareFiveRoundsData';
+import { prepareFiveRoundsData } from '../../api/prepareFiveRoundsData';
 import { ACTIONS } from '../hooks/actions';
 
 const Result = ({ dispatch, roundsNum, currentRound, rounds, results }) => {
