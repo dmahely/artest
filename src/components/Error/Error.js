@@ -18,7 +18,7 @@ const Error = (hasError) => {
                 alt="Please don't stop the music song cover"
             />
             <p className="Error--text">
-                It seems that the music has unfortunately stopped.
+                It seems that the music has unexpectedly stopped.
             </p>
             <Button text="Try again" onClick={() => reloadPage()} />
         </div>
