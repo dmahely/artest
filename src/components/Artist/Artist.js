@@ -1,8 +1,11 @@
 import React from 'react';
 import { ACTIONS } from '../hooks/actions';
 import './Artist.css';
+import fallback from '../../assets/images/unavailable.jpg';
 
 const Artist = ({ dispatch, number, image, name, answer, results }) => {
+    if(!image) image = fallback;
+
     // for changing the number to a play icon on mouse enter
     const handleMouseEnter = (e) => {
         if (e.target.children.length)
