@@ -1,0 +1,5 @@
+.Container--container {
+    background-color: var(--gray);
+    height: 100vh;
+    text-align: center;
+}

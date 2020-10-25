@@ -52,7 +52,7 @@ const App = () => {
         const getToken = async () => {
             if (!isAccessTokenValid()) {
                 const token = await fetchAccessToken();
-                saveAccessToken(token);
+                if (token) saveAccessToken(token);
             }
         };
 

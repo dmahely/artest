@@ -1,0 +1,22 @@
+.Error--container {
+    background-color: var(--gray);
+    height: 100vh;
+    text-align: center;
+}
+
+.Error--heading {
+    font: 36px 'Roboto-Regular';
+    padding-top: 20px;
+    margin: 0;
+}
+
+.Error--image {
+    width: 200px;
+    height: 200px;
+    background-color: var(--dark-gray);
+}
+
+.Error--text {
+    font: 26px 'Roboto-Thin';
+    margin: 30px 10px;
+}

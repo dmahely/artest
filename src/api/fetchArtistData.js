@@ -24,7 +24,13 @@ const fetchArtistData = async (albums) => {
         },
     });
 
-    const artistImagesData = await artistImagesResponse.json();
+    let artistImagesData;
+    try {
+        artistImagesData = await artistImagesResponse.json();
+    } catch (err) {
+        console.log(err);
+        throw new Error(err);
+    }
 
     return artistImagesData;
 };
