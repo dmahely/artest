@@ -1,7 +1,8 @@
 const saveAccessToken = (tokenObject) => {
-    const { token, expires_at } = tokenObject;
+    console.log(tokenObject);
+    const { token, expiresAt } = tokenObject;
     localStorage.setItem('token', JSON.stringify(token));
-    localStorage.setItem('expiry', JSON.stringify(expires_at));
+    localStorage.setItem('expiry', JSON.stringify(expiresAt));
 };
 
 export { saveAccessToken };
