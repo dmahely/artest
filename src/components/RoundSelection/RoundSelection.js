@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './RoundSelection.css';
 import { Option } from '../Option';
-import { prepareFiveRoundsData } from '../../utils/prepareFiveRoundsData';
+import { prepareFiveRoundsData } from '../../api/prepareFiveRoundsData';
 import { ACTIONS } from '../hooks/actions';
 
 const RoundSelection = ({ dispatch }) => {
