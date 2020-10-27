@@ -52,3 +52,21 @@ test('selecting wrong answer shows incorrect result', async () => {
 
     expect(screen.getByText(/Incorrect/i)).toBeVisible();
 });
+
+test('selecting correct answer shows correct result', async () => {
+    render(<App />);
+
+    const startButton = screen.getByRole('button', { name: /start/i });
+    fireEvent.click(startButton);
+
+    const fiveRoundsButton = screen.getByRole('button', { name: '5' });
+    fireEvent.click(fiveRoundsButton);
+
+    await screen.findByText('1/5');
+    const correctOption = screen.getByRole('img', {
+        name: 'Juice WRLD',
+    });
+    fireEvent.click(correctOption);
+
+    expect(screen.getByText(/Correct/i)).toBeVisible();
+});
