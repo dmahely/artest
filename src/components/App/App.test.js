@@ -34,3 +34,21 @@ test('can select 5 rounds an start the game', async () => {
     expect(screen.getByText('Lil Tecca')).toBeVisible();
     expect(screen.getByText('Comethazine')).toBeVisible();
 });
+
+test('selecting wrong answer shows incorrect result', async () => {
+    render(<App />);
+
+    const startButton = screen.getByRole('button', { name: /start/i });
+    fireEvent.click(startButton);
+
+    const fiveRoundsButton = screen.getByRole('button', { name: '5' });
+    fireEvent.click(fiveRoundsButton);
+
+    await screen.findByText('1/5');
+    const wrongOption = screen.getByRole('img', {
+        name: 'Comethazine',
+    });
+    fireEvent.click(wrongOption);
+
+    expect(screen.getByText(/Incorrect/i)).toBeVisible();
+});
