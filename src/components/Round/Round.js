@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Round.css';
 import { Progress } from '../Progress';
 import { Artist } from '../Artist';
