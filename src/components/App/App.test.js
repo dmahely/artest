@@ -70,3 +70,26 @@ test('selecting correct answer shows correct result', async () => {
 
     expect(screen.getByText(/Correct/i)).toBeVisible();
 });
+
+test('clicking on continue in first round result redirects to second round', async () => {
+    render(<App />);
+
+    const startButton = screen.getByRole('button', { name: /start/i });
+    fireEvent.click(startButton);
+
+    const fiveRoundsButton = screen.getByRole('button', { name: '5' });
+    fireEvent.click(fiveRoundsButton);
+
+    await screen.findByText('1/5');
+    const correctOption = screen.getByRole('img', {
+        name: 'Juice WRLD',
+    });
+    fireEvent.click(correctOption);
+
+    await screen.findByText(/Correct/i);
+    const continueButton = screen.getByRole('button', { name: 'Continue' });
+    fireEvent.click(continueButton);
+
+    await screen.findByText('2/5');
+    expect(screen.getByText('2/5')).toBeVisible();
+});
