@@ -2,11 +2,16 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { App } from './App';
 
-it('renders learn react link', () => {
+it('renders guess which artist the album belongs to text', () => {
     render(<App />);
     expect(
         screen.getByText(/Guess which artist the album belongs to/i)
     ).toBeVisible();
+});
+
+it('renders artest logo', () => {
+    render(<App />);
+    expect(screen.getByAltText(/Artest logo/i)).toBeVisible();
 });
 
 it('goes to round selection when the start button is clicked', () => {
