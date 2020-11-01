@@ -34,6 +34,5 @@
     "devDependencies": {
         "msw": "^0.21.3",
         "prettier": "2.1.1"
-    },
-    "proxy": "http://127.0.0.1:4000"
+    }
 }
