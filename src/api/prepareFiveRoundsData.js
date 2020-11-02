@@ -4,8 +4,7 @@ import { setNextRoundArtistOptions } from '../utils/setNextRoundArtistOptions';
 
 const prepareFiveRoundsData = async (roundNum = 1) => {
     const accessToken = JSON.parse(localStorage.getItem('token'));
-
-    const roundsResponse = await fetch('/rounds', {
+    const roundsResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/rounds`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

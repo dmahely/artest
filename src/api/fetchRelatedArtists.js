@@ -2,8 +2,7 @@
 
 const fetchRelatedArtists = async (artistId) => {
     const accessToken = JSON.parse(localStorage.getItem('token'));
-
-    const relatedArtists = await fetch('/relatedArtists', {
+    const relatedArtists = await fetch(`${process.env.REACT_APP_BACKEND_URL}/relatedArtists`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
