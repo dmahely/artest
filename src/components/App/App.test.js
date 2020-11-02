@@ -23,7 +23,7 @@ it('goes to round selection when the start button is clicked', () => {
     ).toBeVisible();
 });
 
-test('can select 5 rounds and start the game', async () => {
+it('can select 5 rounds and start the game', async () => {
     render(<App />);
 
     const startButton = screen.getByRole('button', { name: /start/i });
@@ -37,7 +37,7 @@ test('can select 5 rounds and start the game', async () => {
     expect(screen.getByText('1/5')).toBeVisible();
 });
 
-test('selecting wrong answer shows incorrect result', async () => {
+it('selecting wrong answer shows incorrect result', async () => {
     render(<App />);
 
     const startButton = screen.getByRole('button', { name: /start/i });
@@ -55,7 +55,7 @@ test('selecting wrong answer shows incorrect result', async () => {
     expect(screen.getByText(/Incorrect/i)).toBeVisible();
 });
 
-test('selecting correct answer shows correct result', async () => {
+it('selecting correct answer shows correct result', async () => {
     render(<App />);
 
     const startButton = screen.getByRole('button', { name: /start/i });
@@ -73,7 +73,7 @@ test('selecting correct answer shows correct result', async () => {
     expect(screen.getByText(/Correct/i)).toBeVisible();
 });
 
-test('four artist options are shown in round', async () => {
+it('four artist options are shown in round', async () => {
     render(<App />);
 
     const startButton = screen.getByRole('button', { name: /start/i });
