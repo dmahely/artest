@@ -20,7 +20,7 @@ const FinalResult = ({ dispatch, results, rounds }) => {
     const description = getResultDescription(score, roundsNum);
 
     const handleTweetShare = () => {
-        const tweet = `I got ${score}/${roundsNum} playing Artest! What about you? Check out the game on https://dmahely.github.io/artest/`;
+        const tweet = `I got ${score}/${roundsNum} playing Artest! What about you? Check out the game on https://artestgame.com/`;
         window.open(`${twitterBaseURL}?text=${tweet}`);
     };
 
