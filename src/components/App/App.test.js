@@ -88,3 +88,65 @@ it('four artist options are shown in round', async () => {
     expect(screen.getByText('Lil Tecca')).toBeVisible();
     expect(screen.getByText('Comethazine')).toBeVisible();
 });
+
+it('shows correct result (2/5)', async () => {
+    render(<App />);
+
+    const startButton = screen.getByRole('button', { name: /start/i });
+    fireEvent.click(startButton);
+
+    const fiveRoundsButton = screen.getByRole('button', { name: '5' });
+    fireEvent.click(fiveRoundsButton);
+
+    await screen.findByText('1/5');
+    let artist = screen.getByRole('img', {
+        name: 'Juice WRLD',
+    });
+    fireEvent.click(artist);
+
+    await screen.findByText(/Correct/i);
+    let continueButton = screen.getByRole('button', { name: /Continue/i });
+    fireEvent.click(continueButton);
+
+    await screen.findByText('2/5');
+    artist = screen.getByRole('img', {
+        name: 'Juice WRLD',
+    });
+    fireEvent.click(artist);
+
+    await screen.findByText(/Correct/i);
+    continueButton = screen.getByRole('button', { name: /Continue/i });
+    fireEvent.click(continueButton);
+
+    await screen.findByText('3/5');
+    artist = screen.getByRole('img', {
+        name: 'Lil Tecca',
+    });
+    fireEvent.click(artist);
+    await screen.findByText(/Incorrect/i);
+
+    continueButton = screen.getByRole('button', { name: /Continue/i });
+    fireEvent.click(continueButton);
+
+    await screen.findByText('4/5');
+    artist = screen.getByRole('img', {
+        name: 'Lil Tecca',
+    });
+    fireEvent.click(artist);
+    await screen.findByText(/Incorrect/i);
+
+    continueButton = screen.getByRole('button', { name: /Continue/i });
+    fireEvent.click(continueButton);
+
+    await screen.findByText('5/5');
+    artist = screen.getByRole('img', {
+        name: 'Lil Tecca',
+    });
+    fireEvent.click(artist);
+    await screen.findByText(/Incorrect/i);
+
+    continueButton = screen.getByRole('button', { name: /Continue/i });
+    fireEvent.click(continueButton);
+
+    expect(screen.getByAltText('2/5 score')).toBeVisible();
+});

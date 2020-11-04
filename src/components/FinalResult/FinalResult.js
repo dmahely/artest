@@ -18,6 +18,7 @@ const FinalResult = ({ dispatch, results, rounds }) => {
     const [score, roundsNum] = getFinalScore(results);
     const albumResults = getAlbumResults(rounds, results);
     const description = getResultDescription(score, roundsNum);
+    const altText = `${score}/${roundsNum} score`;
 
     const handleTweetShare = () => {
         const tweet = `I got ${score}/${roundsNum} playing Artest! What about you? Check out the game on https://artestgame.com/`;
@@ -50,7 +51,7 @@ const FinalResult = ({ dispatch, results, rounds }) => {
                 <img
                     className="FinalResult--score-background"
                     src={scoreBackground}
-                    alt="background"
+                    alt={altText}
                 />
                 <p className="FinalResult--score-text">
                     {score}
