@@ -10,13 +10,13 @@ import { relatedArtistsResponse } from './relatedArtistsResponse';
  * for example when testing failure cases (endpoint returning 500, etc.)
  */
 const handlers = [
-    rest.get('/token', async (req, res, ctx) => {
+    rest.get(`${process.env.REACT_APP_BACKEND_URL}/token`, async (req, res, ctx) => {
         return res(ctx.json({ access_token: 'mock_access_token' }));
     }),
-    rest.post('/rounds', async (req, res, ctx) => {
+    rest.post(`${process.env.REACT_APP_BACKEND_URL}/rounds`, async (req, res, ctx) => {
         return res(ctx.json(roundsResponse));
     }),
-    rest.post('/relatedArtists', async (req, res, ctx) => {
+    rest.post(`${process.env.REACT_APP_BACKEND_URL}/relatedArtists`, async (req, res, ctx) => {
         return res(ctx.json(relatedArtistsResponse));
     }),
 ];
