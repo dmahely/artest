@@ -150,3 +150,68 @@ it('shows correct result (2/5)', async () => {
 
     expect(screen.getByAltText('2/5 score')).toBeVisible();
 });
+
+it('redirects to start when play again is clicked', async () => {
+    render(<App />);
+
+    const startButton = screen.getByRole('button', { name: /start/i });
+    fireEvent.click(startButton);
+
+    const fiveRoundsButton = screen.getByRole('button', { name: '5' });
+    fireEvent.click(fiveRoundsButton);
+
+    await screen.findByText('1/5');
+    let artist = screen.getByRole('img', {
+        name: 'Juice WRLD',
+    });
+    fireEvent.click(artist);
+
+    await screen.findByText(/Correct/i);
+    let continueButton = screen.getByRole('button', { name: /Continue/i });
+    fireEvent.click(continueButton);
+
+    await screen.findByText('2/5');
+    artist = screen.getByRole('img', {
+        name: 'Juice WRLD',
+    });
+    fireEvent.click(artist);
+
+    await screen.findByText(/Correct/i);
+    continueButton = screen.getByRole('button', { name: /Continue/i });
+    fireEvent.click(continueButton);
+
+    await screen.findByText('3/5');
+    artist = screen.getByRole('img', {
+        name: 'Lil Tecca',
+    });
+    fireEvent.click(artist);
+    await screen.findByText(/Incorrect/i);
+
+    continueButton = screen.getByRole('button', { name: /Continue/i });
+    fireEvent.click(continueButton);
+
+    await screen.findByText('4/5');
+    artist = screen.getByRole('img', {
+        name: 'Lil Tecca',
+    });
+    fireEvent.click(artist);
+    await screen.findByText(/Incorrect/i);
+
+    continueButton = screen.getByRole('button', { name: /Continue/i });
+    fireEvent.click(continueButton);
+
+    await screen.findByText('5/5');
+    artist = screen.getByRole('img', {
+        name: 'Lil Tecca',
+    });
+    fireEvent.click(artist);
+    await screen.findByText(/Incorrect/i);
+
+    continueButton = screen.getByRole('button', { name: /Continue/i });
+    fireEvent.click(continueButton);
+
+    let playAgainButton = screen.getByRole('button', { name: /Play again/i });
+    fireEvent.click(playAgainButton);
+
+    expect(screen.getByText(/Start/i)).toBeVisible();
+});
