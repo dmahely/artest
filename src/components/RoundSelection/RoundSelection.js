@@ -3,15 +3,18 @@ import './RoundSelection.css';
 import { Option } from '../Option';
 import { prepareFiveRoundsData } from '../../api/prepareFiveRoundsData';
 import { ACTIONS } from '../hooks/actions';
+import { analyticsHelper } from '../../utils/analyticsHelper';
 
 const RoundSelection = ({ dispatch }) => {
     useEffect(() => {
+        analyticsHelper.registerPageView('Round Selection');
+    }, []);
+
+    useEffect(() => {
         const getAlbums = async () => {
             const albums = await prepareFiveRoundsData();
-            // ... below happens later
 
             dispatch({
-                // <-- warning comes from here
                 type: ACTIONS.SET_ROUNDS,
                 payload: albums,
             });

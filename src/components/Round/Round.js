@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Round.css';
 import { Progress } from '../Progress';
 import { Artist } from '../Artist';
 import { Loading } from '../Loading';
+import { analyticsHelper } from '../../utils/analyticsHelper';
 
 const Round = ({ dispatch, roundsNum, currentRound, rounds, results }) => {
+    useEffect(() => {
+        analyticsHelper.registerPageView('Round');
+    }, []);
+
     // returns loading component if any data we need is still not set in state
     // usually whenever data in state is prepped or when related artists fetch is late
     if (

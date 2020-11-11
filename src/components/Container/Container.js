@@ -2,6 +2,9 @@ import React from 'react';
 import './Container.css';
 import { App } from '../App';
 import { ErrorBoundary } from '../ErrorBoundary';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
 
 const Container = () => {
     return (

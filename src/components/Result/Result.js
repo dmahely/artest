@@ -6,8 +6,13 @@ import { getNextRoundArtistOptions } from '../../utils/getNextRoundArtistOptions
 import { setNextRoundArtistOptions } from '../../utils/setNextRoundArtistOptions';
 import { prepareFiveRoundsData } from '../../api/prepareFiveRoundsData';
 import { ACTIONS } from '../hooks/actions';
+import { analyticsHelper } from '../../utils/analyticsHelper';
 
 const Result = ({ dispatch, roundsNum, currentRound, rounds, results }) => {
+    useEffect(() => {
+        analyticsHelper.registerPageView('Round Result');
+    }, []);
+
     const roundResult = getCurrentRoundResult(rounds, currentRound, results);
 
     useEffect(() => {
