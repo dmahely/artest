@@ -16,7 +16,7 @@
 }
 
 .FinalResult--single-album.incorrect {
-    opacity: 20%;
+    opacity: 0.2;
 }
 
 .FinalResult--user-text {
