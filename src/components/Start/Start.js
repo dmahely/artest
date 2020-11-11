@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Start.css';
 import logo from '../../assets/images/logo.png';
 import { Button } from '../Button';
 import { ACTIONS } from '../hooks/actions';
-import ReactGA from 'react-ga';
-
-ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
-ReactGA.pageview('/start');
+import { analyticsHelper } from '../../utils/analyticsHelper';
 
 const Start = ({ dispatch }) => {
+    useEffect(() => {
+        analyticsHelper.registerPageView('Start');
+    }, []);
+
     return (
         <div className="Start--container">
             <div className="Start--top-shape"></div>
