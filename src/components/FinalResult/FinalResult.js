@@ -11,6 +11,7 @@ import { getResultDescription } from '../../utils/getResultDescription';
 import { ACTIONS } from '../hooks/actions';
 import ReactGA from 'react-ga';
 
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
 ReactGA.pageview('/end');
 
 const twitterBaseURL = 'https://twitter.com/intent/tweet';
