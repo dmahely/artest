@@ -9,6 +9,9 @@ import twitterLogo from '../../assets/images/twitter-logo.svg';
 import facebookLogo from '../../assets/images/facebook-logo.svg';
 import { getResultDescription } from '../../utils/getResultDescription';
 import { ACTIONS } from '../hooks/actions';
+import ReactGA from 'react-ga';
+
+ReactGA.pageview('/end');
 
 const twitterBaseURL = 'https://twitter.com/intent/tweet';
 const facebookBaseURL =

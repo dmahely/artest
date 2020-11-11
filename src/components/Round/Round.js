@@ -3,6 +3,9 @@ import './Round.css';
 import { Progress } from '../Progress';
 import { Artist } from '../Artist';
 import { Loading } from '../Loading';
+import ReactGA from 'react-ga';
+
+ReactGA.pageview('/round');
 
 const Round = ({ dispatch, roundsNum, currentRound, rounds, results }) => {
     // returns loading component if any data we need is still not set in state

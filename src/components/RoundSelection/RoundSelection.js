@@ -3,6 +3,9 @@ import './RoundSelection.css';
 import { Option } from '../Option';
 import { prepareFiveRoundsData } from '../../api/prepareFiveRoundsData';
 import { ACTIONS } from '../hooks/actions';
+import ReactGA from 'react-ga';
+
+ReactGA.pageview('/roundSelection');
 
 const RoundSelection = ({ dispatch }) => {
     useEffect(() => {

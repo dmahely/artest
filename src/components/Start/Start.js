@@ -3,6 +3,9 @@ import './Start.css';
 import logo from '../../assets/images/logo.png';
 import { Button } from '../Button';
 import { ACTIONS } from '../hooks/actions';
+import ReactGA from 'react-ga';
+
+ReactGA.pageview('/start');
 
 const Start = ({ dispatch }) => {
     return (
