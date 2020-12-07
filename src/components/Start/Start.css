@@ -43,10 +43,23 @@
     margin-top: 50px;
 }
 
-.Start--spotify-text {
-    color: var(--green);
+.Start--footer-attribution {
     font: 13px 'Roboto-Regular';
     margin: 5px;
+}
+
+.Start--spotify-text {
+    color: var(--green);
+}
+
+.Start--developer-text {
+    color: var(--black);
+}
+
+.Start--github-link,
+.Start--github-link:visited {
+    text-decoration: underline;
+    color: var(--black);
 }
 
 .Start--api-status {

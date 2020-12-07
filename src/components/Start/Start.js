@@ -29,7 +29,23 @@ const Start = ({ dispatch }) => {
             />
 
             <footer className="Start--footer">
-                <p className="Start--spotify-text">Powered by Spotify. </p>
+                <p className="Start--footer-attribution">
+                    <span className="Start--developer-text">
+                        Developed by{' '}
+                        <a
+                            className="Start--github-link"
+                            href="https://github.com/dmahely"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Doaa Mahely
+                        </a>
+                        .
+                    </span>{' '}
+                    <span className="Start--spotify-text">
+                        Powered by Spotify.
+                    </span>{' '}
+                </p>
                 <a
                     className="Start--api-status"
                     href="https://status.spotify.dev"
