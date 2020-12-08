@@ -1,6 +1,7 @@
 .Result--container {
     background: linear-gradient(180deg, var(--white) 0%, var(--green) 100%);
     flex: 1;
+    padding: 0 0 20px 0;
 }
 
 .Result--container.correct {
