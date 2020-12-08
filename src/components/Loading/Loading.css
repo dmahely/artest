@@ -3,6 +3,7 @@
     display: inline-flex;
     align-items: center;
     height: 100vh;
+    align-self: center;
 }
 
 .Loading--emoji {

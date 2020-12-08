@@ -38,4 +38,16 @@ html,
 body {
     margin: 0;
     height: 100%;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }

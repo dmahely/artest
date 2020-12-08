@@ -1,5 +1,7 @@
 .App--container {
     background-color: var(--gray);
-    height: 100vh;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
