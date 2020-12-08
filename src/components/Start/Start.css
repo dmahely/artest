@@ -90,4 +90,10 @@
         bottom: -300px;
         transform: rotate(-30deg);
     }
+
+    @media only screen and (max-height: 600px) {
+        .Start--bottom-shape {
+            display: none;
+        }
+    }
 }
