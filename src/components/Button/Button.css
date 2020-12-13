@@ -5,7 +5,7 @@
     color: var(--black);
     font: 24px 'Roboto-Thin';
     cursor: pointer;
-    height: 45px;
+    min-height: 45px;
     width: 130px;
     margin: 0 auto;
     padding: 7px;
