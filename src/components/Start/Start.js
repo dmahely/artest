@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Start.css';
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/logo.svg';
 import { Button } from '../Button';
 import { ACTIONS } from '../hooks/actions';
 import { analyticsHelper } from '../../utils/analyticsHelper';

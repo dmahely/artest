@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="191" viewBox="0 0 250 191">
+  <g id="Group_15" data-name="Group 15" transform="translate(-101 -479)">
+    <g id="Group_9" data-name="Group 9" transform="translate(38 370)">
+      <g id="Rectangle_1" data-name="Rectangle 1" transform="translate(63 150)" fill="#ffd166" stroke="#ffd166" stroke-width="1">
+        <rect width="250" height="150" stroke="none"/>
+        <rect x="0.5" y="0.5" width="249" height="149" fill="none"/>
+      </g>
+      <path id="Path_3" data-name="Path 3" d="M0,0H220V15H0Z" transform="translate(78 130)" fill="#ef476f"/>
+      <path id="Path_4" data-name="Path 4" d="M0,0H190V15H0Z" transform="translate(93 109)" fill="#ffd166"/>
+      <g id="Group_6" data-name="Group 6" transform="translate(73.999 196.043)">
+        <g id="Group_5" data-name="Group 5">
+          <path id="Path_1" data-name="Path 1" d="M229.094,122.459a2.259,2.259,0,0,0-1.977-.372l-31.921,9.034a2.259,2.259,0,0,0-1.643,2.173v30.577a9.031,9.031,0,1,0,4.517,7.819V144.037l27.4-7.756v18.556a9.031,9.031,0,1,0,4.517,7.819v-38.4A2.258,2.258,0,0,0,229.094,122.459Zm-40.059,53.749a4.517,4.517,0,1,1,4.517-4.517A4.522,4.522,0,0,1,189.034,176.208Zm31.921-9.034a4.517,4.517,0,1,1,4.517-4.517A4.522,4.522,0,0,1,220.956,167.174Zm4.517-35.587-27.4,7.756V135l27.4-7.756Z" transform="translate(-180 -122.002)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <text id="Artest" transform="translate(185 604)" fill="#101dbe" font-size="40" font-family="Rockwell-Regular, Rockwell"><tspan x="0" y="0">Ar</tspan><tspan y="0" text-decoration="underline">test</tspan></text>
+  </g>
+</svg>
